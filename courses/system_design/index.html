@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>System Design Interview — TechLib</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --bg: #080b11;
+        --surface: #0f1420;
+        --surface2: #161d2e;
+        --border: #1e2940;
+        --border2: #253050;
+        --text: #e8edf5;
+        --muted: #6b7a9a;
+        --dim: #3d4f70;
+        --accent: #4e8eff;
+        --accent2: #7c5cfc;
+      }
+      html {
+        font-size: 15px;
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+      }
+      .header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(8, 11, 17, 0.9);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--border);
+        padding: 0 40px;
+      }
+      .header-inner {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 60px;
+      }
+      .back {
+        font-size: 13px;
+        color: var(--muted);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: color 0.15s;
+      }
+      .back:hover {
+        color: var(--accent);
+      }
+      .hero {
+        padding: 60px 40px 48px;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .hero-icon {
+        font-size: 40px;
+        margin-bottom: 16px;
+      }
+      .course-label {
+        font-size: 11px;
+        color: var(--accent);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 10px;
+      }
+      h1 {
+        font-size: clamp(24px, 4vw, 38px);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1.15;
+        margin-bottom: 12px;
+      }
+      .desc {
+        font-size: 15px;
+        color: var(--muted);
+        line-height: 1.7;
+        margin-bottom: 8px;
+      }
+      .chapter-count {
+        font-size: 13px;
+        color: var(--dim);
+        font-family: monospace;
+      }
+      .chapter-list {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 40px 80px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .chapter-item {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        text-decoration: none;
+        color: var(--text);
+        transition: all 0.15s;
+      }
+      .chapter-item:hover {
+        background: var(--surface2);
+        border-color: var(--border2);
+        transform: translateX(3px);
+      }
+      .ch-num {
+        font-size: 12px;
+        color: var(--dim);
+        font-family: monospace;
+        min-width: 28px;
+        flex-shrink: 0;
+      }
+      .ch-title {
+        font-size: 14px;
+        font-weight: 500;
+        flex: 1;
+        line-height: 1.4;
+      }
+      .ch-arrow {
+        color: var(--dim);
+        font-size: 13px;
+        transition: all 0.15s;
+        flex-shrink: 0;
+      }
+      .chapter-item:hover .ch-arrow {
+        color: var(--accent);
+        transform: translateX(2px);
+      }
+      .divider {
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--border),
+          transparent
+        );
+        margin: 8px 0;
+      }
+      @media (max-width: 700px) {
+        .header {
+          padding: 0 16px;
+        }
+        .hero {
+          padding: 40px 16px 32px;
+        }
+        .chapter-list {
+          padding: 0 16px 60px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-inner">
+        <a class="back" href="../../index.html">← Back to Library</a>
+        <span style="font-size: 12px; color: var(--dim); font-family: monospace"
+          >31 chapters</span
+        >
+      </div>
+    </header>
+    <div class="hero">
+      <div class="hero-icon">🏗️</div>
+      <div class="course-label">Course</div>
+      <h1>System Design Interview</h1>
+      <p class="desc">
+        Scale from zero to millions of users. Covers rate limiters, consistent
+        hashing, URL shorteners, web crawlers, and more.
+      </p>
+      <p class="chapter-count">31 chapters</p>
+    </div>
+    <div class="chapter-list">
+      <a class="chapter-item" href="00_foreword.html">
+        <span class="ch-num">01</span>
+        <span class="ch-title">Foreword</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="01_join-the-community.html">
+        <span class="ch-num">02</span>
+        <span class="ch-title">Join the Community</span>
+        <span class="ch-arrow">→</span> </a
+      ><a
+        class="chapter-item"
+        href="02_scale-from-zero-to-millions-of-users.html"
+      >
+        <span class="ch-num">03</span>
+        <span class="ch-title">Scale From Zero To Millions Of Users</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="03_back-of-the-envelope-estimation.html">
+        <span class="ch-num">04</span>
+        <span class="ch-title">Back of the Envelope Estimation</span>
+        <span class="ch-arrow">→</span> </a
+      ><a
+        class="chapter-item"
+        href="04_a-framework-for-system-design-interviews.html"
+      >
+        <span class="ch-num">05</span>
+        <span class="ch-title">A Framework for System Design Interviews</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="05_design-a-rate-limiter.html">
+        <span class="ch-num">06</span>
+        <span class="ch-title">Design a Rate Limiter</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="06_design-consistent-hashing.html">
+        <span class="ch-num">07</span>
+        <span class="ch-title">Design Consistent Hashing</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="07_design-a-key-value-store.html">
+        <span class="ch-num">08</span>
+        <span class="ch-title">Design a Key-Value Store</span>
+        <span class="ch-arrow">→</span> </a
+      ><a
+        class="chapter-item"
+        href="08_design-a-unique-id-generator-in-distributed-systems.html"
+      >
+        <span class="ch-num">09</span>
+        <span class="ch-title"
+          >Design a Unique ID Generator in Distributed Systems</span
+        >
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="09_design-a-url-shortener.html">
+        <span class="ch-num">10</span>
+        <span class="ch-title">Design a URL Shortener</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="10_design-a-web-crawler.html">
+        <span class="ch-num">11</span>
+        <span class="ch-title">Design a Web Crawler</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="11_design-a-notification-system.html">
+        <span class="ch-num">12</span>
+        <span class="ch-title">Design a Notification System</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="12_design-a-news-feed-system.html">
+        <span class="ch-num">13</span>
+        <span class="ch-title">Design a News Feed System</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="13_design-a-chat-system.html">
+        <span class="ch-num">14</span>
+        <span class="ch-title">Design a Chat System</span>
+        <span class="ch-arrow">→</span> </a
+      ><a
+        class="chapter-item"
+        href="14_design-a-search-autocomplete-system.html"
+      >
+        <span class="ch-num">15</span>
+        <span class="ch-title">Design a Search Autocomplete System</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="15_design-youtube.html">
+        <span class="ch-num">16</span>
+        <span class="ch-title">Design YouTube</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="16_design-google-drive.html">
+        <span class="ch-num">17</span>
+        <span class="ch-title">Design Google Drive</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="17_proximity-service.html">
+        <span class="ch-num">18</span>
+        <span class="ch-title">Proximity Service</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="18_nearby-friends.html">
+        <span class="ch-num">19</span>
+        <span class="ch-title">Nearby Friends</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="19_google-maps.html">
+        <span class="ch-num">20</span>
+        <span class="ch-title">Google Maps</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="20_distributed-message-queue.html">
+        <span class="ch-num">21</span>
+        <span class="ch-title">Distributed Message Queue</span>
+        <span class="ch-arrow">→</span> </a
+      ><a
+        class="chapter-item"
+        href="21_metrics-monitoring-and-alerting-system.html"
+      >
+        <span class="ch-num">22</span>
+        <span class="ch-title">Metrics Monitoring and Alerting System</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="22_ad-click-event-aggregation.html">
+        <span class="ch-num">23</span>
+        <span class="ch-title">Ad Click Event Aggregation</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="23_hotel-reservation-system.html">
+        <span class="ch-num">24</span>
+        <span class="ch-title">Hotel Reservation System</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="24_distributed-email-service.html">
+        <span class="ch-num">25</span>
+        <span class="ch-title">Distributed Email Service</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="25_s3-like-object-storage.html">
+        <span class="ch-num">26</span>
+        <span class="ch-title">S3-like Object Storage</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="26_real-time-gaming-leaderboard.html">
+        <span class="ch-num">27</span>
+        <span class="ch-title">Real-Time Gaming Leaderboard</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="27_payment-system.html">
+        <span class="ch-num">28</span>
+        <span class="ch-title">Payment System</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="28_digital-wallet.html">
+        <span class="ch-num">29</span>
+        <span class="ch-title">Digital Wallet</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="29_stock-exchange.html">
+        <span class="ch-num">30</span>
+        <span class="ch-title">Stock Exchange</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="30_afterword.html">
+        <span class="ch-num">31</span>
+        <span class="ch-title">Afterword</span>
+        <span class="ch-arrow">→</span>
+      </a>
+    </div>
+  </body>
+</html>

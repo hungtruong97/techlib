@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Session-based Authentication vs. JWT — TechLib Guides</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --heading: #1a1a2e;
+        --body: #2d3748;
+        --border: #e2e8f0;
+        --muted: #718096;
+        --accent: #4f46e5;
+      }
+      html {
+        font-size: 15px;
+      }
+      body {
+        font-family: var(--sans);
+        background: #f7f8fc;
+        color: var(--body);
+        line-height: 1.75;
+      }
+      .wrap {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 32px 80px;
+      }
+      .header {
+        margin-bottom: 32px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid var(--border);
+      }
+      .category {
+        font-size: 12px;
+        color: var(--accent);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 6px;
+      }
+      h1 {
+        font-size: 32px;
+        font-weight: 800;
+        color: var(--heading);
+        margin: 0;
+      }
+      h2 {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--heading);
+        margin: 36px 0 12px;
+        padding-top: 12px;
+        border-top: 1px solid var(--border);
+      }
+      h3 {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--heading);
+        margin: 24px 0 8px;
+      }
+      p {
+        font-size: 15px;
+        line-height: 1.85;
+        margin: 12px 0;
+      }
+      ul,
+      ol {
+        padding-left: 24px;
+        margin: 10px 0;
+      }
+      li {
+        font-size: 15px;
+        line-height: 1.8;
+        margin-bottom: 6px;
+      }
+      code {
+        font-size: 13px;
+        color: #2b6cb0;
+        background: #ebf4ff;
+        padding: 2px 6px;
+        border-radius: 4px;
+      }
+      pre {
+        background: #1e1e2e;
+        border-radius: 8px;
+        padding: 18px 20px;
+        overflow-x: auto;
+        margin: 16px 0;
+        font-size: 13px;
+        line-height: 1.65;
+        color: #e2e8f0;
+      }
+      blockquote {
+        border-left: 4px solid var(--border);
+        padding: 10px 18px;
+        margin: 16px 0;
+        color: var(--muted);
+        font-style: italic;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 16px 0;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 14px 0;
+        font-size: 14px;
+      }
+      th,
+      td {
+        border: 1px solid var(--border);
+        padding: 9px 13px;
+        text-align: left;
+      }
+      th {
+        background: #f8faff;
+        font-weight: 600;
+        color: var(--heading);
+      }
+      strong {
+        font-weight: 700;
+        color: var(--heading);
+      }
+      hr {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 32px 0;
+      }
+      a {
+        color: var(--accent);
+      }
+      @media (max-width: 700px) {
+        .wrap {
+          padding: 20px 16px 60px;
+        }
+        h1 {
+          font-size: 26px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="header">
+        <div class="category">Security</div>
+        <h1>Session-based Authentication vs. JWT</h1>
+      </div>
+      <div
+        class="prose prose-p:text-gray-600 prose-img:rounded-xl prose-img:w-full prose-h2:text-xl sm:prose-h2:text-2xl prose-h2:font-bold prose-h2:mb-2 prose-p:mb-4 sm:prose-p:mb-6 prose-p:leading-relaxed prose-base sm:prose-lg max-w-none"
+      >
+        <p>
+          <img
+            alt=""
+            src="https://assets.bytebytego.com/diagrams/0333-what-s-the_difference-between-session-based-authentication-and-jwts.png"
+          />
+        </p>
+        <p>Here’s a simple breakdown for both approaches:</p>
+        <h2 id="session-based-authentication">Session-Based Authentication</h2>
+        <p>
+          In this approach, you store the session information in a database or
+          session store and hand over a session ID to the user.
+        </p>
+        <p>
+          Think of it like a passenger getting just the Ticket ID of their
+          flight while all other details are stored in the airline’s database.
+        </p>
+        <p>Here’s how it works:</p>
+        <ul>
+          <li>
+            The user makes a login request and the frontend app sends the
+            request to the backend server.
+          </li>
+          <li>
+            The backend creates a session using a secret key and stores the data
+            in session storage.
+          </li>
+          <li>
+            The server sends a cookie back to the client with the unique session
+            ID.
+          </li>
+          <li>
+            The user makes a new request and the browser sends the session ID
+            along with the request.
+          </li>
+          <li>The server authenticates the user using the session ID.</li>
+        </ul>
+        <h2 id="jwt-based-authentication">JWT-Based Authentication</h2>
+        <p>
+          In the JWT-based approach, you don’t store the session information in
+          the session store.
+        </p>
+        <p>The entire information is available within the token.</p>
+        <p>
+          Think of it like getting the flight ticket along with all the details
+          available on the ticket but encoded.
+        </p>
+        <p>Here’s how it works:</p>
+        <ul>
+          <li>
+            The user makes a login request and it goes to the backend server.
+          </li>
+          <li>
+            The server verifies the credentials and issues a JWT. The JWT is
+            signed using a private key and no session storage is involved.
+          </li>
+          <li>
+            The JWT is passed to the client, either as a cookie or in the
+            response body. Both approaches have their pros and cons but we’ve
+            gone with the cookie approach.
+          </li>
+          <li>
+            For every subsequent request, the browser sends the cookie with the
+            JWT.
+          </li>
+          <li>
+            The server verifies the JWT using the secret private key and
+            extracts the user info.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ML System Design Interview – TechLib</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --bg: #0f1117;
+        --surface: #1a1d27;
+        --surface2: #222536;
+        --border: #2d3148;
+        --accent: #6c63ff;
+        --accent2: #4f46e5;
+        --text: #e2e8f0;
+        --muted: #8892a4;
+        --green: #22c55e;
+        --radius: 12px;
+      }
+      html {
+        font-size: 15px;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+          Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      /* Header */
+      .header {
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        padding: 0 32px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .header-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 64px;
+      }
+      .logo {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--text);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .logo-icon {
+        width: 32px;
+        height: 32px;
+        background: var(--accent);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+      }
+      .progress-pill {
+        background: var(--surface2);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 6px 14px;
+        font-size: 13px;
+        color: var(--muted);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .progress-pill span {
+        color: var(--green);
+        font-weight: 600;
+      }
+
+      /* Hero */
+      .hero {
+        background: linear-gradient(135deg, #1a1d27 0%, #12142a 100%);
+        border-bottom: 1px solid var(--border);
+        padding: 48px 32px;
+      }
+      .hero-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(108, 99, 255, 0.15);
+        border: 1px solid rgba(108, 99, 255, 0.3);
+        border-radius: 20px;
+        padding: 4px 12px;
+        font-size: 12px;
+        color: var(--accent);
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+      .hero h1 {
+        font-size: 36px;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 12px;
+        background: linear-gradient(135deg, #e2e8f0, #a5b4fc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hero p {
+        font-size: 16px;
+        color: var(--muted);
+        max-width: 560px;
+        margin-bottom: 28px;
+      }
+      .hero-stats {
+        display: flex;
+        gap: 32px;
+      }
+      .stat {
+        display: flex;
+        flex-direction: column;
+      }
+      .stat-num {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--text);
+      }
+      .stat-label {
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      /* Progress bar */
+      .progress-bar-wrap {
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        padding: 16px 32px;
+      }
+      .progress-bar-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .progress-label {
+        display: flex;
+        justify-content: space-between;
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 8px;
+      }
+      .progress-label span {
+        color: var(--text);
+        font-weight: 600;
+      }
+      .bar {
+        height: 6px;
+        background: var(--surface2);
+        border-radius: 3px;
+        overflow: hidden;
+      }
+      .bar-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent), var(--green));
+        border-radius: 3px;
+        transition: width 0.3s ease;
+      }
+
+      /* Main layout */
+      .main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 40px 32px;
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        gap: 32px;
+      }
+      @media (max-width: 800px) {
+        .main {
+          grid-template-columns: 1fr;
+          padding: 24px 16px;
+        }
+        .hero {
+          padding: 32px 16px;
+        }
+        .hero h1 {
+          font-size: 26px;
+        }
+        .hero-stats {
+          gap: 20px;
+        }
+      }
+
+      /* Chapter list */
+      .section-title {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--muted);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+      .chapters {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .chapter-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 18px 20px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        text-decoration: none;
+        color: var(--text);
+        transition: all 0.2s;
+        position: relative;
+        overflow: hidden;
+      }
+      .chapter-card:hover {
+        border-color: var(--accent);
+        background: var(--surface2);
+        transform: translateX(4px);
+      }
+      .chapter-card.done {
+        border-color: rgba(34, 197, 94, 0.3);
+      }
+      .chapter-card.done::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: var(--green);
+      }
+      .chapter-num {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: var(--surface2);
+        border: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--muted);
+        flex-shrink: 0;
+      }
+      .chapter-card.done .chapter-num {
+        background: rgba(34, 197, 94, 0.1);
+        border-color: rgba(34, 197, 94, 0.3);
+        color: var(--green);
+      }
+      .chapter-info {
+        flex: 1;
+        min-width: 0;
+      }
+      .chapter-title {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 3px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .chapter-meta {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .chapter-status {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+      }
+      .badge-done {
+        background: rgba(34, 197, 94, 0.15);
+        color: var(--green);
+        border: 1px solid rgba(34, 197, 94, 0.3);
+        border-radius: 6px;
+        padding: 3px 8px;
+        font-weight: 600;
+      }
+      .badge-available {
+        background: rgba(108, 99, 255, 0.15);
+        color: var(--accent);
+        border: 1px solid rgba(108, 99, 255, 0.3);
+        border-radius: 6px;
+        padding: 3px 8px;
+        font-weight: 600;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 20px;
+      }
+      .card-title {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--muted);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+      }
+      .sidebar-chapters {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .sidebar-ch {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 10px;
+        border-radius: 8px;
+        text-decoration: none;
+        color: var(--text);
+        font-size: 13px;
+        transition: background 0.15s;
+      }
+      .sidebar-ch:hover {
+        background: var(--surface2);
+      }
+      .sidebar-ch .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--border);
+        flex-shrink: 0;
+      }
+      .sidebar-ch.done .dot {
+        background: var(--green);
+      }
+      .sidebar-ch.available .dot {
+        background: var(--accent);
+      }
+      .info-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .info-item {
+        display: flex;
+        justify-content: space-between;
+        font-size: 13px;
+      }
+      .info-item .label {
+        color: var(--muted);
+      }
+      .info-item .value {
+        color: var(--text);
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-inner">
+        <div class="logo">
+          <div class="logo-icon">⚡</div>
+          TechLib
+        </div>
+        <div class="progress-pill">
+          Progress: <span id="progressText">0/11</span> chapters
+        </div>
+      </div>
+    </header>
+
+    <div class="hero">
+      <div class="hero-inner">
+        <div class="hero-badge">📘 Course</div>
+        <h1>Machine Learning System<br />Design Interview</h1>
+        <p>
+          Master the art of designing large-scale machine learning systems.
+          Build intuition for real-world ML architecture decisions.
+        </p>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-num">11</span
+            ><span class="stat-label">Chapters</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num" id="doneCount">0</span
+            ><span class="stat-label">Completed</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">200+</span
+            ><span class="stat-label">Figures</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-inner">
+        <div class="progress-label">
+          <span>Course Progress</span>
+          <span id="progressPct">0%</span>
+        </div>
+        <div class="bar">
+          <div class="bar-fill" id="barFill" style="width: 0%"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="content">
+        <div class="section-title">All Chapters</div>
+        <div class="chapters" id="chapterList"></div>
+      </div>
+
+      <aside class="sidebar">
+        <div class="card">
+          <div class="card-title">Quick Navigation</div>
+          <div class="sidebar-chapters" id="sidebarList"></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Course Info</div>
+          <div class="info-list">
+            <div class="info-item">
+              <span class="label">Publisher</span
+              ><span class="value">TechLib</span>
+            </div>
+            <div class="info-item">
+              <span class="label">Total Chapters</span
+              ><span class="value">11</span>
+            </div>
+            <div class="info-item">
+              <span class="label">Format</span
+              ><span class="value">Offline HTML</span>
+            </div>
+            <div class="info-item">
+              <span class="label">Images</span
+              ><span class="value">Embedded ✅</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <script>
+      const CHAPTERS = [
+        {
+          num: "01",
+          title: "Introduction and Overview",
+          slug: "ch01-introduction-and-overview",
+          imgs: 24,
+        },
+        {
+          num: "02",
+          title: "Visual Search System",
+          slug: "ch02-visual-search-system",
+          imgs: 24,
+        },
+        {
+          num: "03",
+          title: "Google Street View Blurring System",
+          slug: "ch03-google-street-view-blurring-system",
+          imgs: 12,
+        },
+        {
+          num: "04",
+          title: "YouTube Video Search",
+          slug: "ch04-youtube-video-search",
+          imgs: 19,
+        },
+        {
+          num: "05",
+          title: "Harmful Content Detection",
+          slug: "ch05-harmful-content-detection",
+          imgs: 19,
+        },
+        {
+          num: "06",
+          title: "Video Recommendation System",
+          slug: "ch06-video-recommendation-system",
+          imgs: 26,
+        },
+        {
+          num: "07",
+          title: "Event Recommendation System",
+          slug: "ch07-event-recommendation-system",
+          imgs: 22,
+        },
+        {
+          num: "08",
+          title: "Ad Click Prediction on Social Platforms",
+          slug: "ch08-ad-click-prediction-on-social-platforms",
+          imgs: 18,
+        },
+        {
+          num: "09",
+          title: "Similar Listings on Vacation Rental Platforms",
+          slug: "ch09-similar-listings-on-vacation-rental-platforms",
+          imgs: 11,
+        },
+        {
+          num: "10",
+          title: "Personalized News Feed",
+          slug: "ch10-personalized-news-feed",
+          imgs: 13,
+        },
+        {
+          num: "11",
+          title: "People You May Know",
+          slug: "ch11-people-you-may-know",
+          imgs: 21,
+        },
+      ];
+
+      // Track read state in localStorage
+      const STORAGE_KEY = "mlsd_progress";
+      function getProgress() {
+        try {
+          return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+        } catch {
+          return {};
+        }
+      }
+      function toggleDone(slug) {
+        const p = getProgress();
+        p[slug] = !p[slug];
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(p));
+        render();
+      }
+
+      function render() {
+        const progress = getProgress();
+        const doneCount = CHAPTERS.filter((c) => progress[c.slug]).length;
+        const pct = Math.round((doneCount / CHAPTERS.length) * 100);
+
+        document.getElementById("progressText").textContent =
+          `${doneCount}/${CHAPTERS.length}`;
+        document.getElementById("doneCount").textContent = doneCount;
+        document.getElementById("progressPct").textContent = `${pct}%`;
+        document.getElementById("barFill").style.width = `${pct}%`;
+
+        // Main chapter list
+        document.getElementById("chapterList").innerHTML = CHAPTERS.map(
+          (ch) => {
+            const done = progress[ch.slug];
+            const file = ch.slug + ".html";
+            return `
+      <a class="chapter-card${done ? " done" : ""}" href="${file}">
+        <div class="chapter-num">${ch.num}</div>
+        <div class="chapter-info">
+          <div class="chapter-title">${ch.title}</div>
+          <div class="chapter-meta">${ch.imgs} figures · Self-contained HTML</div>
+        </div>
+        <div class="chapter-status">
+          ${
+            done
+              ? `<span class="badge-done" onclick="event.preventDefault();toggleDone('${ch.slug}')">✓ Done</span>`
+              : `<span class="badge-available" onclick="event.preventDefault();toggleDone('${ch.slug}')">Mark done</span>`
+          }
+        </div>
+      </a>`;
+          },
+        ).join("");
+
+        // Sidebar quick nav
+        document.getElementById("sidebarList").innerHTML = CHAPTERS.map(
+          (ch) => {
+            const done = progress[ch.slug];
+            const cls = done ? "done" : "available";
+            return `<a class="sidebar-ch ${cls}" href="${ch.slug}.html">
+      <span class="dot"></span>Ch${ch.num} — ${ch.title}
+    </a>`;
+          },
+        ).join("");
+      }
+
+      render();
+    </script>
+  </body>
+</html>

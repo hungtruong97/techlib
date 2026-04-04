@@ -1,0 +1,1179 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Coding Patterns — TechLib</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --bg: #0f1117;
+        --surface: #1a1d27;
+        --surface2: #222536;
+        --border: #2d3148;
+        --accent: #6c63ff;
+        --text: #e2e8f0;
+        --muted: #8892a4;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+      }
+      .header {
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        padding: 0 32px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .header-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        height: 60px;
+      }
+      .logo {
+        font-size: 17px;
+        font-weight: 700;
+      }
+      .hero {
+        background: linear-gradient(135deg, #1a1d27, #12142a);
+        border-bottom: 1px solid var(--border);
+        padding: 48px 32px;
+      }
+      .hero-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(108, 99, 255, 0.15);
+        border: 1px solid rgba(108, 99, 255, 0.3);
+        border-radius: 20px;
+        padding: 4px 12px;
+        font-size: 12px;
+        color: var(--accent);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 16px;
+      }
+      h1 {
+        font-size: 34px;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 10px;
+        background: linear-gradient(135deg, #e2e8f0, #a5b4fc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .subtitle {
+        font-size: 15px;
+        color: var(--muted);
+        margin-bottom: 28px;
+      }
+      .stats {
+        display: flex;
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+      .stat-num {
+        font-size: 22px;
+        font-weight: 700;
+      }
+      .stat-label {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .stat-num.easy {
+        color: #22c55e;
+      }
+      .stat-num.medium {
+        color: #eab308;
+      }
+      .stat-num.hard {
+        color: #ef4444;
+      }
+      .main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 32px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: 20px;
+      }
+      .section {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .sec-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 18px;
+        border-bottom: 1px solid var(--border);
+        background: var(--surface2);
+      }
+      .sec-icon {
+        font-size: 17px;
+      }
+      .sec-title {
+        font-size: 13px;
+        font-weight: 700;
+        flex: 1;
+      }
+      .sec-count {
+        background: var(--border);
+        border-radius: 10px;
+        padding: 2px 8px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .chapter-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 18px;
+        text-decoration: none;
+        color: var(--text);
+        font-size: 13px;
+        border-bottom: 1px solid var(--border);
+        transition: background 0.15s;
+      }
+      .chapter-item:last-child {
+        border-bottom: none;
+      }
+      .chapter-item:hover {
+        background: var(--surface2);
+      }
+      .diff-badge {
+        font-size: 11px;
+        font-weight: 700;
+        padding: 2px 8px;
+        border-radius: 8px;
+        margin-left: 8px;
+        flex-shrink: 0;
+      }
+      @media (max-width: 700px) {
+        .main {
+          grid-template-columns: 1fr;
+          padding: 20px 16px;
+        }
+        .hero {
+          padding: 32px 16px;
+        }
+        h1 {
+          font-size: 26px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-inner"><span class="logo">⚡ TechLib</span></div>
+    </header>
+    <div class="hero">
+      <div class="hero-inner">
+        <div class="badge">🧩 Course</div>
+        <h1>Coding Patterns</h1>
+        <p class="subtitle">
+          Master 19 essential patterns with 120 practice problems.
+        </p>
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-num">120</div>
+            <div class="stat-label">Problems</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num easy">0</div>
+            <div class="stat-label">Easy</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num medium">120</div>
+            <div class="stat-label">Medium</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num hard">0</div>
+            <div class="stat-label">Hard</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">19</div>
+            <div class="stat-label">Patterns</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main">
+      <div class="section">
+        <div class="sec-header">
+          <span class="sec-icon">👆</span
+          ><span class="sec-title">Two Pointers</span
+          ><span class="sec-count">7</span>
+        </div>
+        <a
+          class="chapter-item"
+          href="coding_patterns/01_00_introduction-to-two-pointers.html"
+          ><span>Introduction to Two Pointers</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/01_01_pair-sum-sorted.html"
+          ><span>Pair Sum - Sorted</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a class="chapter-item" href="coding_patterns/01_02_triplet-sum.html"
+          ><span>Triplet Sum</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/01_03_is-palindrome-valid.html"
+          ><span>Is Palindrome Valid</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/01_04_largest-container.html"
+          ><span>Largest Container</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/01_05_shift-zeros-to-the-end.html"
+          ><span>Shift Zeros to the End</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/01_06_next-lexicographical-sequence.html"
+          ><span>Next Lexicographical Sequence</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        >
+      </div>
+      <div class="section">
+        <div class="sec-header">
+          <span class="sec-icon">#️⃣</span
+          ><span class="sec-title">Hash Maps And Sets</span
+          ><span class="sec-count">6</span>
+        </div>
+        <a
+          class="chapter-item"
+          href="coding_patterns/02_00_introduction-to-hash-maps-and-sets.html"
+          ><span>Introduction to Hash Maps and Sets</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/02_01_pair-sum-unsorted.html"
+          ><span>Pair Sum - Unsorted</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/02_02_verify-sudoku-board.html"
+          ><span>Verify Sudoku Board</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a class="chapter-item" href="coding_patterns/02_03_zero-striping.html"
+          ><span>Zero Striping</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/02_04_longest-chain-of-consecutive-numbers.html"
+          ><span>Longest Chain of Consecutive Numbers</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/02_05_geometric-sequence-triplets.html"
+          ><span>Geometric Sequence Triplets</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        >
+      </div>
+      <div class="section">
+        <div class="sec-header">
+          <span class="sec-icon">🔗</span
+          ><span class="sec-title">Linked Lists</span
+          ><span class="sec-count">7</span>
+        </div>
+        <a
+          class="chapter-item"
+          href="coding_patterns/03_00_introduction-to-linked-lists.html"
+          ><span>Introduction to Linked Lists</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/03_01_linked-list-reversal.html"
+          ><span>Linked List Reversal</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/03_02_remove-the-kth-last-node-from-a-linked-list.html"
+          ><span>Remove the Kth Last Node From a Linked List</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/03_03_linked-list-intersection.html"
+          ><span>Linked List Intersection</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a class="chapter-item" href="coding_patterns/03_04_lru-cache.html"
+          ><span>LRU Cache</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/03_05_palindromic-linked-list.html"
+          ><span>Palindromic Linked List</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/03_06_flatten-a-multi-level-linked-list.html"
+          ><span>Flatten a Multi-Level Linked List</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        >
+      </div>
+      <div class="section">
+        <div class="sec-header">
+          <span class="sec-icon">⚡</span
+          ><span class="sec-title">Fast And Slow Pointers</span
+          ><span class="sec-count">4</span>
+        </div>
+        <a
+          class="chapter-item"
+          href="coding_patterns/04_00_introduction-to-fast-and-slow-pointers.html"
+          ><span>Introduction to Fast and Slow Pointers</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/04_01_linked-list-loop.html"
+          ><span>Linked List Loop</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/04_02_linked-list-midpoint.html"
+          ><span>Linked List Midpoint</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a class="chapter-item" href="coding_patterns/04_03_happy-number.html"
+          ><span>Happy Number</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        >
+      </div>
+      <div class="section">
+        <div class="sec-header">
+          <span class="sec-icon">🪟</span
+          ><span class="sec-title">Sliding Windows</span
+          ><span class="sec-count">4</span>
+        </div>
+        <a
+          class="chapter-item"
+          href="coding_patterns/05_00_introduction-to-sliding-windows.html"
+          ><span>Introduction to Sliding Windows</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/05_01_substring-anagrams.html"
+          ><span>Substring Anagrams</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/05_02_longest-substring-with-unique-characters.html"
+          ><span>Longest Substring With Unique Characters</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/05_03_longest-uniform-substring-after-replacements.html"
+          ><span>Longest Uniform Substring After Replacements</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        >
+      </div>
+      <div class="section">
+        <div class="sec-header">
+          <span class="sec-icon">🔍</span
+          ><span class="sec-title">Binary Search</span
+          ><span class="sec-count">9</span>
+        </div>
+        <a
+          class="chapter-item"
+          href="coding_patterns/06_00_introduction-to-binary-search.html"
+          ><span>Introduction to Binary Search</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/06_01_find-the-insertion-index.html"
+          ><span>Find the Insertion Index</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/06_02_first-and-last-occurrences-of-a-number.html"
+          ><span>First and Last Occurrences of a Number</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a class="chapter-item" href="coding_patterns/06_03_cutting-wood.html"
+          ><span>Cutting Wood</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/06_04_find-the-target-in-a-rotated-sorted-array.html"
+          ><span>Find the Target in a Rotated Sorted Array</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/06_05_find-the-median-from-two-sorted-arrays.html"
+          ><span>Find the Median From Two Sorted Arrays</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a class="chapter-item" href="coding_patterns/06_06_matrix-search.html"
+          ><span>Matrix Search</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/06_07_local-maxima-in-array.html"
+          ><span>Local Maxima in Array</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/06_08_weighted-random-selection.html"
+          ><span>Weighted Random Selection</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        >
+      </div>
+      <div class="section">
+        <div class="sec-header">
+          <span class="sec-icon">📚</span><span class="sec-title">Stacks</span
+          ><span class="sec-count">7</span>
+        </div>
+        <a
+          class="chapter-item"
+          href="coding_patterns/07_00_introduction-to-stacks.html"
+          ><span>Introduction to Stacks</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/07_01_valid-parenthesis-expression.html"
+          ><span>Valid Parenthesis Expression</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/07_02_next-largest-number-to-the-right.html"
+          ><span>Next Largest Number to the Right</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/07_03_evaluate-expression.html"
+          ><span>Evaluate Expression</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/07_04_repeated-removal-of-adjacent-duplicates.html"
+          ><span>Repeated Removal of Adjacent Duplicates</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/07_05_implement-a-queue-using-stacks.html"
+          ><span>Implement a Queue using Stacks</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/07_06_maximums-of-sliding-window.html"
+          ><span>Maximums of Sliding Window</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        >
+      </div>
+      <div class="section">
+        <div class="sec-header">
+          <span class="sec-icon">⛰️</span><span class="sec-title">Heaps</span
+          ><span class="sec-count">5</span>
+        </div>
+        <a
+          class="chapter-item"
+          href="coding_patterns/08_00_introduction-to-heaps.html"
+          ><span>Introduction to Heaps</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/08_01_k-most-frequent-strings.html"
+          ><span>K Most Frequent Strings</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/08_02_combine-sorted-linked-lists.html"
+          ><span>Combine Sorted Linked Lists</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/08_03_median-of-an-integer-stream.html"
+          ><span>Median of an Integer Stream</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/08_04_sort-a-k-sorted-array.html"
+          ><span>Sort a K-Sorted Array</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        >
+      </div>
+      <div class="section">
+        <div class="sec-header">
+          <span class="sec-icon">📏</span
+          ><span class="sec-title">Intervals</span
+          ><span class="sec-count">4</span>
+        </div>
+        <a
+          class="chapter-item"
+          href="coding_patterns/09_00_introduction-to-intervals.html"
+          ><span>Introduction to Intervals</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/09_01_merge-overlapping-intervals.html"
+          ><span>Merge Overlapping Intervals</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/09_02_identify-all-interval-overlaps.html"
+          ><span>Identify All Interval Overlaps</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/09_03_largest-overlap-of-intervals.html"
+          ><span>Largest Overlap of Intervals</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        >
+      </div>
+      <div class="section">
+        <div class="sec-header">
+          <span class="sec-icon">➕</span
+          ><span class="sec-title">Prefix Sums</span
+          ><span class="sec-count">4</span>
+        </div>
+        <a
+          class="chapter-item"
+          href="coding_patterns/10_00_introduction-to-prefix-sums.html"
+          ><span>Introduction to Prefix Sums</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/10_01_sum-between-range.html"
+          ><span>Sum Between Range</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/10_02_k-sum-subarrays.html"
+          ><span>K-Sum Subarrays</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/10_03_product-array-without-current-element.html"
+          ><span>Product Array Without Current Element</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        >
+      </div>
+      <div class="section">
+        <div class="sec-header">
+          <span class="sec-icon">🌳</span><span class="sec-title">Trees</span
+          ><span class="sec-count">13</span>
+        </div>
+        <a
+          class="chapter-item"
+          href="coding_patterns/11_00_introduction-to-trees.html"
+          ><span>Introduction to Trees</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/11_01_invert-binary-tree.html"
+          ><span>Invert Binary Tree</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/11_02_balanced-binary-tree-validation.html"
+          ><span>Balanced Binary Tree Validation</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/11_03_rightmost-nodes-of-a-binary-tree.html"
+          ><span>Rightmost Nodes of a Binary Tree</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/11_04_widest-binary-tree-level.html"
+          ><span>Widest Binary Tree Level</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/11_05_binary-search-tree-validation.html"
+          ><span>Binary Search Tree Validation</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/11_06_lowest-common-ancestor.html"
+          ><span>Lowest Common Ancestor</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/11_07_build-binary-tree-from-preorder-and-inorder-traversals.html"
+          ><span>Build Binary Tree From Preorder and Inorder Traversals</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/11_08_maximum-sum-of-a-continuous-path-in-a-binary-tree.html"
+          ><span>Maximum Sum of a Continuous Path in a Binary Tree</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/11_09_binary-tree-symmetry.html"
+          ><span>Binary Tree Symmetry</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/11_10_binary-tree-columns.html"
+          ><span>Binary Tree Columns</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/11_11_kth-smallest-number-in-a-binary-search-tree.html"
+          ><span>Kth Smallest Number in a Binary Search Tree</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/11_12_serialize-and-deserialize-a-binary-tree.html"
+          ><span>Serialize and Deserialize a Binary Tree</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        >
+      </div>
+      <div class="section">
+        <div class="sec-header">
+          <span class="sec-icon">🌿</span><span class="sec-title">Tries</span
+          ><span class="sec-count">4</span>
+        </div>
+        <a
+          class="chapter-item"
+          href="coding_patterns/12_00_introduction-to-tries.html"
+          ><span>Introduction to Tries</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a class="chapter-item" href="coding_patterns/12_01_design-a-trie.html"
+          ><span>Design a Trie</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/12_02_insert-and-search-words-with-wildcards.html"
+          ><span>Insert and Search Words with Wildcards</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/12_03_find-all-words-on-a-board.html"
+          ><span>Find All Words on a Board</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        >
+      </div>
+      <div class="section">
+        <div class="sec-header">
+          <span class="sec-icon">🕸️</span><span class="sec-title">Graphs</span
+          ><span class="sec-count">11</span>
+        </div>
+        <a
+          class="chapter-item"
+          href="coding_patterns/13_00_introduction-to-graphs.html"
+          ><span>Introduction to Graphs</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/13_01_graph-deep-copy.html"
+          ><span>Graph Deep Copy</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a class="chapter-item" href="coding_patterns/13_02_count-islands.html"
+          ><span>Count Islands</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/13_03_matrix-infection.html"
+          ><span>Matrix Infection</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/13_04_bipartite-graph-validation.html"
+          ><span>Bipartite Graph Validation</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/13_05_longest-increasing-path.html"
+          ><span>Longest Increasing Path</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/13_06_shortest-transformation-sequence.html"
+          ><span>Shortest Transformation Sequence</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/13_07_merging-communities.html"
+          ><span>Merging Communities</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a class="chapter-item" href="coding_patterns/13_08_prerequisites.html"
+          ><span>Prerequisites</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a class="chapter-item" href="coding_patterns/13_09_shortest-path.html"
+          ><span>Shortest Path</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/13_10_connect-the-dots.html"
+          ><span>Connect the Dots</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        >
+      </div>
+      <div class="section">
+        <div class="sec-header">
+          <span class="sec-icon">↩️</span
+          ><span class="sec-title">Backtracking</span
+          ><span class="sec-count">6</span>
+        </div>
+        <a
+          class="chapter-item"
+          href="coding_patterns/14_00_introduction-to-backtracking.html"
+          ><span>Introduction to Backtracking</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/14_01_find-all-permutations.html"
+          ><span>Find All Permutations</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/14_02_find-all-subsets.html"
+          ><span>Find All Subsets</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a class="chapter-item" href="coding_patterns/14_03_n-queens.html"
+          ><span>N Queens</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/14_04_combinations-of-a-sum.html"
+          ><span>Combinations of a Sum</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/14_05_phone-keypad-combinations.html"
+          ><span>Phone Keypad Combinations</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        >
+      </div>
+      <div class="section">
+        <div class="sec-header">
+          <span class="sec-icon">🧮</span
+          ><span class="sec-title">Dynamic Programming</span
+          ><span class="sec-count">10</span>
+        </div>
+        <a
+          class="chapter-item"
+          href="coding_patterns/15_00_introduction-to-dynamic-programming.html"
+          ><span>Introduction to Dynamic Programming</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/15_01_climbing-stairs.html"
+          ><span>Climbing Stairs</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/15_02_minimum-coin-combination.html"
+          ><span>Minimum Coin Combination</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/15_03_matrix-pathways.html"
+          ><span>Matrix Pathways</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/15_04_neighborhood-burglary.html"
+          ><span>Neighborhood Burglary</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/15_05_longest-common-subsequence.html"
+          ><span>Longest Common Subsequence</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/15_06_longest-palindrome-in-a-string.html"
+          ><span>Longest Palindrome in a String</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/15_07_maximum-subarray-sum.html"
+          ><span>Maximum Subarray Sum</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a class="chapter-item" href="coding_patterns/15_08_0-1-knapsack.html"
+          ><span>0/1 Knapsack</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/15_09_largest-square-in-a-matrix.html"
+          ><span>Largest Square in a Matrix</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        >
+      </div>
+      <div class="section">
+        <div class="sec-header">
+          <span class="sec-icon">💰</span><span class="sec-title">Greedy</span
+          ><span class="sec-count">4</span>
+        </div>
+        <a
+          class="chapter-item"
+          href="coding_patterns/16_00_introduction-to-greedy-algorithms.html"
+          ><span>Introduction to Greedy Algorithms</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/16_01_jump-to-the-end.html"
+          ><span>Jump to the End</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a class="chapter-item" href="coding_patterns/16_02_gas-stations.html"
+          ><span>Gas Stations</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a class="chapter-item" href="coding_patterns/16_03_candies.html"
+          ><span>Candies</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        >
+      </div>
+      <div class="section">
+        <div class="sec-header">
+          <span class="sec-icon">🔄</span
+          ><span class="sec-title">Sort And Search</span
+          ><span class="sec-count">5</span>
+        </div>
+        <a
+          class="chapter-item"
+          href="coding_patterns/17_00_introduction-to-sort-and-search.html"
+          ><span>Introduction to Sort and Search</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/17_01_sort-linked-list.html"
+          ><span>Sort Linked List</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a class="chapter-item" href="coding_patterns/17_02_sort-array.html"
+          ><span>Sort Array</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/17_03_kth-largest-integer.html"
+          ><span>Kth Largest Integer</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/17_04_dutch-national-flag.html"
+          ><span>Dutch National Flag</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        >
+      </div>
+      <div class="section">
+        <div class="sec-header">
+          <span class="sec-icon">⚙️</span
+          ><span class="sec-title">Bit Manipulation</span
+          ><span class="sec-count">4</span>
+        </div>
+        <a
+          class="chapter-item"
+          href="coding_patterns/18_00_introduction-to-bit-manipulation.html"
+          ><span>Introduction to Bit Manipulation</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/18_01_hamming-weights-of-integers.html"
+          ><span>Hamming Weights of Integers</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/18_02_lonely-integer.html"
+          ><span>Lonely Integer</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/18_03_swap-odd-and-even-bits.html"
+          ><span>Swap Odd and Even Bits</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        >
+      </div>
+      <div class="section">
+        <div class="sec-header">
+          <span class="sec-icon">📐</span
+          ><span class="sec-title">Math And Geometry</span
+          ><span class="sec-count">6</span>
+        </div>
+        <a
+          class="chapter-item"
+          href="coding_patterns/19_00_introduction-to-math-and-geometry.html"
+          ><span>Introduction to Math and Geometry</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/19_01_spiral-traversal.html"
+          ><span>Spiral Traversal</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/19_02_reverse-32-bit-integer.html"
+          ><span>Reverse 32-Bit Integer</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/19_03_maximum-collinear-points.html"
+          ><span>Maximum Collinear Points</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/19_04_the-josephus-problem.html"
+          ><span>The Josephus Problem</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        ><a
+          class="chapter-item"
+          href="coding_patterns/19_05_triangle-numbers.html"
+          ><span>Triangle Numbers</span
+          ><span class="diff-badge" style="color: #854d0e; background: #fef9c3"
+            >Medium</span
+          ></a
+        >
+      </div>
+    </div>
+  </body>
+</html>

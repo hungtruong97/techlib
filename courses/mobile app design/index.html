@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Mobile System Design Interview — TechLib</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --bg: #080b11;
+        --surface: #0f1420;
+        --surface2: #161d2e;
+        --border: #1e2940;
+        --border2: #253050;
+        --text: #e8edf5;
+        --muted: #6b7a9a;
+        --dim: #3d4f70;
+        --accent: #4e8eff;
+        --accent2: #7c5cfc;
+      }
+      html {
+        font-size: 15px;
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+      }
+      .header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(8, 11, 17, 0.9);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--border);
+        padding: 0 40px;
+      }
+      .header-inner {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 60px;
+      }
+      .back {
+        font-size: 13px;
+        color: var(--muted);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: color 0.15s;
+      }
+      .back:hover {
+        color: var(--accent);
+      }
+      .hero {
+        padding: 60px 40px 48px;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .hero-icon {
+        font-size: 40px;
+        margin-bottom: 16px;
+      }
+      .course-label {
+        font-size: 11px;
+        color: var(--accent);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 10px;
+      }
+      h1 {
+        font-size: clamp(24px, 4vw, 38px);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1.15;
+        margin-bottom: 12px;
+      }
+      .desc {
+        font-size: 15px;
+        color: var(--muted);
+        line-height: 1.7;
+        margin-bottom: 8px;
+      }
+      .chapter-count {
+        font-size: 13px;
+        color: var(--dim);
+        font-family: monospace;
+      }
+      .chapter-list {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 40px 80px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .chapter-item {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        text-decoration: none;
+        color: var(--text);
+        transition: all 0.15s;
+      }
+      .chapter-item:hover {
+        background: var(--surface2);
+        border-color: var(--border2);
+        transform: translateX(3px);
+      }
+      .ch-num {
+        font-size: 12px;
+        color: var(--dim);
+        font-family: monospace;
+        min-width: 28px;
+        flex-shrink: 0;
+      }
+      .ch-title {
+        font-size: 14px;
+        font-weight: 500;
+        flex: 1;
+        line-height: 1.4;
+      }
+      .ch-arrow {
+        color: var(--dim);
+        font-size: 13px;
+        transition: all 0.15s;
+        flex-shrink: 0;
+      }
+      .chapter-item:hover .ch-arrow {
+        color: var(--accent);
+        transform: translateX(2px);
+      }
+      .divider {
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--border),
+          transparent
+        );
+        margin: 8px 0;
+      }
+      @media (max-width: 700px) {
+        .header {
+          padding: 0 16px;
+        }
+        .hero {
+          padding: 40px 16px 32px;
+        }
+        .chapter-list {
+          padding: 0 16px 60px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-inner">
+        <a class="back" href="../../index.html">← Back to Library</a>
+        <span style="font-size: 12px; color: var(--dim); font-family: monospace"
+          >11 chapters</span
+        >
+      </div>
+    </header>
+    <div class="hero">
+      <div class="hero-icon">📱</div>
+      <div class="course-label">Course</div>
+      <h1>Mobile System Design Interview</h1>
+      <p class="desc">
+        Design news feeds, chat apps, stock trading, YouTube, and Google Drive
+        for mobile platforms.
+      </p>
+      <p class="chapter-count">11 chapters</p>
+    </div>
+    <div class="chapter-list">
+      <a class="chapter-item" href="mob-ch01-introduction.html">
+        <span class="ch-num">01</span>
+        <span class="ch-title">Introduction</span>
+        <span class="ch-arrow">→</span> </a
+      ><a
+        class="chapter-item"
+        href="mob-ch02-a-framework-for-mobile-sd-interviews.html"
+      >
+        <span class="ch-num">02</span>
+        <span class="ch-title">A Framework for Mobile SD Interviews</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="mob-ch03-news-feed-app.html">
+        <span class="ch-num">03</span>
+        <span class="ch-title">News Feed App</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="mob-ch04-chat-app.html">
+        <span class="ch-num">04</span>
+        <span class="ch-title">Chat App</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="mob-ch05-stock-trading-app.html">
+        <span class="ch-num">05</span>
+        <span class="ch-title">Stock Trading App</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="mob-ch06-pagination-library.html">
+        <span class="ch-num">06</span>
+        <span class="ch-title">Pagination Library</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="mob-ch07-hotel-reservation-app.html">
+        <span class="ch-num">07</span>
+        <span class="ch-title">Hotel Reservation App</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="mob-ch08-google-drive-app.html">
+        <span class="ch-num">08</span>
+        <span class="ch-title">Google Drive App</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="mob-ch09-youtube-app.html">
+        <span class="ch-num">09</span>
+        <span class="ch-title">YouTube App</span>
+        <span class="ch-arrow">→</span> </a
+      ><a
+        class="chapter-item"
+        href="mob-ch10-mobile-system-design-building-blocks.html"
+      >
+        <span class="ch-num">10</span>
+        <span class="ch-title">Mobile System Design Building Blocks</span>
+        <span class="ch-arrow">→</span> </a
+      ><a class="chapter-item" href="mob-ch11-quick-reference-cheat-sheet.html">
+        <span class="ch-num">11</span>
+        <span class="ch-title">Quick Reference Cheat Sheet</span>
+        <span class="ch-arrow">→</span>
+      </a>
+    </div>
+  </body>
+</html>

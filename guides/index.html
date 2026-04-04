@@ -1,0 +1,1942 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>TechLib Guides</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --bg: #080b11;
+        --surface: #0f1420;
+        --surface2: #161d2e;
+        --border: #1e2940;
+        --border2: #253050;
+        --text: #e8edf5;
+        --muted: #6b7a9a;
+        --dim: #3d4f70;
+        --accent: #4e8eff;
+        --accent2: #7c5cfc;
+      }
+      html {
+        font-size: 15px;
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+      }
+      .header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(8, 11, 17, 0.9);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--border);
+        padding: 0 40px;
+      }
+      .header-inner {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 60px;
+      }
+      .back {
+        font-size: 13px;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.15s;
+      }
+      .back:hover {
+        color: var(--accent);
+      }
+      .logo {
+        font-family: "DM Serif Display", serif;
+        font-size: 17px;
+        color: var(--text);
+      }
+      .hero {
+        padding: 60px 40px 48px;
+        max-width: 1280px;
+        margin: 0 auto;
+      }
+      .hero h1 {
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(28px, 4vw, 52px);
+        font-weight: 400;
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+        margin-bottom: 10px;
+        background: linear-gradient(135deg, #e8edf5 30%, #6b7a9a);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hero-meta {
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .nav {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 40px 32px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .nav-item {
+        font-size: 12px;
+        padding: 5px 12px;
+        border: 1px solid var(--border);
+        border-radius: 100px;
+        text-decoration: none;
+        color: var(--muted);
+        transition: all 0.15s;
+        white-space: nowrap;
+      }
+      .nav-item:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .main {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 40px 100px;
+      }
+      .section {
+        margin-bottom: 56px;
+      }
+      .section-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--border);
+      }
+      .section-icon {
+        font-size: 18px;
+      }
+      .section-name {
+        font-family: "DM Serif Display", serif;
+        font-size: 20px;
+        font-weight: 400;
+        letter-spacing: -0.02em;
+        flex: 1;
+      }
+      .section-count {
+        font-size: 12px;
+        color: var(--dim);
+        font-family: "JetBrains Mono", monospace;
+      }
+      .post-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2px;
+      }
+      .post-link {
+        display: block;
+        padding: 9px 12px;
+        font-size: 13px;
+        color: var(--muted);
+        text-decoration: none;
+        border-radius: 6px;
+        line-height: 1.4;
+        transition: all 0.15s;
+      }
+      .post-link:hover {
+        background: var(--surface);
+        color: var(--text);
+      }
+      footer {
+        border-top: 1px solid var(--border);
+        padding: 28px 40px;
+        text-align: center;
+        font-size: 12px;
+        color: var(--dim);
+        font-family: "JetBrains Mono", monospace;
+      }
+      @media (max-width: 768px) {
+        .header {
+          padding: 0 16px;
+        }
+        .hero {
+          padding: 40px 16px 32px;
+        }
+        .nav {
+          padding: 0 16px 24px;
+        }
+        .main {
+          padding: 0 16px 60px;
+        }
+        .post-list {
+          grid-template-columns: 1fr;
+        }
+        footer {
+          padding: 20px 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-inner">
+        <a class="back" href="../index.html">← Library</a>
+        <span class="logo">TechLib Guides</span>
+        <span style="font-size: 12px; color: var(--dim); font-family: monospace"
+          >404 articles</span
+        >
+      </div>
+    </header>
+    <div class="hero">
+      <h1>Guides</h1>
+      <p class="hero-meta">404 articles across 15 categories</p>
+    </div>
+    <nav class="nav">
+      <a class="nav-item" href="#api-and-web-development"
+        >API and Web Development</a
+      ><a class="nav-item" href="#real-world-case-studies"
+        >Real World Case Studies</a
+      ><a class="nav-item" href="#ai-and-machine-learning"
+        >AI and Machine Learning</a
+      ><a class="nav-item" href="#database-and-storage">Database and Storage</a
+      ><a class="nav-item" href="#technical-interviews">Technical Interviews</a
+      ><a class="nav-item" href="#caching-and-performance"
+        >Caching and Performance</a
+      ><a class="nav-item" href="#payment-and-fintech">Payment and Fintech</a
+      ><a class="nav-item" href="#software-architecture"
+        >Software Architecture</a
+      ><a class="nav-item" href="#devtools-and-productivity"
+        >DevTools and Productivity</a
+      ><a class="nav-item" href="#software-development">Software Development</a
+      ><a class="nav-item" href="#cloud-and-distributed-systems"
+        >Cloud and Distributed Systems</a
+      ><a class="nav-item" href="#how-it-works">How it Works</a
+      ><a class="nav-item" href="#devops-and-ci-cd">DevOps and CI/CD</a
+      ><a class="nav-item" href="#security">Security</a
+      ><a class="nav-item" href="#computer-fundamentals"
+        >Computer Fundamentals</a
+      >
+    </nav>
+    <main class="main">
+      <div class="section" id="api-and-web-development">
+        <div class="section-header">
+          <span class="section-icon">🌐</span>
+          <h2 class="section-name">API and Web Development</h2>
+          <span class="section-count">50</span>
+        </div>
+        <div class="post-list">
+          <a
+            class="post-link"
+            href="api-and-web-development/10-essential-components-of-a-production-web-application.html"
+            >10 Essential Components of a Production Web Application</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/18-common-ports-worth-knowing.html"
+            >18 Common Ports Worth Knowing</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/5-http-status-codes-that-should-never-have-been-created.html"
+            >5 HTTP Status Codes That Should Never Have Been Created</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/8-tips-for-efficient-api-design.html"
+            >8 Tips for Efficient API Design</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/a-cheat-sheet-for-api-designs.html"
+            >A cheat sheet for API designs</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/a-cheatsheet-on-comparing-api-architectural-styles.html"
+            >A Cheatsheet on Comparing API Architectural Styles</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/a-cheatsheet-to-build-secure-apis.html"
+            >A Cheatsheet to Build Secure APIs</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/api-gateway-101.html"
+            >API Gateway 101</a
+          ><a class="post-link" href="api-and-web-development/api-vs-sdk.html"
+            >API vs SDK</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/do-you-know-all-the-components-of-a-url.html"
+            >Do you know all the components of a URL?</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/explaining-9-types-of-api-testing.html"
+            >Explaining 9 Types of API Testing</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/graphql-adoption-patterns.html"
+            >GraphQL Adoption Patterns</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/how-browsers-render-web-pages.html"
+            >How Browsers Render Web Pages</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/how-do-we-perform-pagination-in-api-design.html"
+            >How do we Perform Pagination in API Design?</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/how-does-grpc-work.html"
+            >How does gRPC work?</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/how-does-javascript-work.html"
+            >How does Javascript Work?</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/how-does-rest-api-work.html"
+            >How does REST API work?</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/how-graphql-works-at-linkedin.html"
+            >How GraphQL Works at LinkedIn</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/how-nat-enabled-the-internet.html"
+            >How NAT Enabled the Internet</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/how-to-design-effective-and-safe-apis.html"
+            >How to Design Effective and Safe APIs</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/how-to-design-secure-web-api-access.html"
+            >How to Design Secure Web API Access</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/http-1-http-2-http-3.html"
+            >HTTP/1 -> HTTP/2 -> HTTP/3</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/http-status-codes-you-should-know.html"
+            >HTTP Status Codes You Should Know</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/important-things-about-http-headers.html"
+            >Important Things About HTTP Headers</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/internet-traffic-routing-policies.html"
+            >Internet Traffic Routing Policies</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/key-use-cases-for-load-balancers.html"
+            >Key Use Cases for Load Balancers</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/load-balancer-realistic-use-cases.html"
+            >Load Balancer Realistic Use Cases</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/load-balancer-vs-api-gateway.html"
+            >Load Balancer vs. API Gateway</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/polling-vs-webhooks.html"
+            >Polling vs Webhooks</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/proxy-vs-reverse-proxy.html"
+            >Proxy vs Reverse Proxy</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/rest-api-cheatsheet.html"
+            >REST API Cheatsheet</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/rest-api-vs-graphql.html"
+            >REST API vs. GraphQL</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/reverse-proxy-vs-api-gateway-vs-load-balancer.html"
+            >Reverse Proxy vs. API Gateway vs. Load Balancer</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/short-long-polling-sse-websocket.html"
+            >Short/long polling, SSE, WebSocket</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/soap-vs-rest-vs-graphql-vs-rpc.html"
+            >SOAP vs REST vs GraphQL vs RPC</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/the-evolving-landscape-of-api-protocols-in-2023.html"
+            >The Evolving Landscape of API Protocols in 2023</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/the-ultimate-api-learning-roadmap.html"
+            >The Ultimate API Learning Roadmap</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/top-12-tips-for-api-security.html"
+            >Top 12 Tips for API Security</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/top-3-api-gateway-use-cases.html"
+            >Top 3 API Gateway Use Cases</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/top-9-http-request-methods.html"
+            >Top 9 HTTP Request Methods</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/unicast-vs-broadcast-vs-multicast-vs-anycast.html"
+            >Unicast vs Broadcast vs Multicast vs Anycast</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/url-uri-urn-differences-explained.html"
+            >URL, URI, URN - Differences Explained</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/what-are-the-differences-between-wan-lan-pan-and-man.html"
+            >What are the differences between WAN, LAN, PAN and MAN?</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/what-do-version-numbers-mean.html"
+            >What do version numbers mean?</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/what-does-an-api-gateway-do.html"
+            >What Does an API Gateway Do?</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/what-is-a-load-balancer.html"
+            >What is a Load Balancer?</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/what-is-css-cascading-style-sheets.html"
+            >What is CSS (Cascading Style Sheets)?</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/what-is-graphql.html"
+            >What is GraphQL?</a
+          ><a class="post-link" href="api-and-web-development/what-is-grpc.html"
+            >What is gRPC?</a
+          ><a
+            class="post-link"
+            href="api-and-web-development/what-makes-http2-faster-than-http1.html"
+            >What makes HTTP2 faster than HTTP1?</a
+          >
+        </div>
+      </div>
+      <div class="section" id="real-world-case-studies">
+        <div class="section-header">
+          <span class="section-icon">🏭</span>
+          <h2 class="section-name">Real World Case Studies</h2>
+          <span class="section-count">32</span>
+        </div>
+        <div class="post-list">
+          <a
+            class="post-link"
+            href="real-world-case-studies/0-to-1-5-billion-guests-airbnb-s-architectural-evolution.html"
+            >0 to 1.5 Billion Guests: Airbnb's Architectural Evolution</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/10-principles-for-building-resilient-payment-systems.html"
+            >10 Principles for Building Resilient Payment Systems</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/100x-postgres-scaling-at-figma.html"
+            >100X Postgres Scaling at Figma</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/4-ways-netflix-uses-caching.html"
+            >4 Ways Netflix Uses Caching</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/api-of-apis-app-integrations.html"
+            >API of APIs - App Integrations</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/evolution-of-airbnb-s-microservice-architecture.html"
+            >Evolution of Airbnb’s Microservice Architecture</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/evolution-of-the-netflix-api-architecture.html"
+            >Evolution of the Netflix API Architecture</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/evolution-of-uber-s-api-layer.html"
+            >Evolution of Uber's API Layer</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/fixing-bugs-automatically-at-meta-scale.html"
+            >Fixing Bugs Automatically at Meta Scale</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/how-discord-stores-trillions-of-messages.html"
+            >How Discord Stores Trillions of Messages</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/how-does-a-typical-push-notification-system-work.html"
+            >How Does a Typical Push Notification System Work?</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/how-does-twitter-recommend-for-you-timeline-in-1-5-seconds.html"
+            >How does Twitter recommend “For You” Timeline in 1.5 seconds?</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/how-levelsfyi-scaled-to-millions-of-users-with-google-sheets.html"
+            >How Levelsfyi Scaled to Millions of Users with Google Sheets</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/how-netflix-really-uses-java.html"
+            >How Netflix Really Uses Java</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/how-netflix-scales-push-messaging.html"
+            >How Netflix Scales Push Messaging</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/how-tiktok-manages-a-200k-file-frontend-monorepo.html"
+            >How TikTok Manages a 200K File Frontend MonoRepo</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/how-to-design-stack-overflow.html"
+            >How to Design Stack Overflow</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/how-youtube-handles-massive-video-uploads.html"
+            >How YouTube Handles Massive Video Uploads</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/is-telegram-secure.html"
+            >Is Telegram Secure?</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/mcdonald-s-event-driven-architecture.html"
+            >McDonald’s Event-Driven Architecture</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/netflix-s-overall-architecture.html"
+            >Netflix's Overall Architecture</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/netflix-s-tech-stack.html"
+            >Netflix's Tech Stack</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/netflix-tech-stack-ci-cd-pipeline.html"
+            >Netflix Tech Stack - CI/CD Pipeline</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/netflix-tech-stack-databases.html"
+            >Netflix Tech Stack - Databases</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/reddit-s-core-architecture.html"
+            >Reddit's Core Architecture</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/the-one-line-change-that-reduced-clone-times-by-99-at-pinterest.html"
+            >The one-line change that reduced clone times by 99% at Pinterest</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/top-9-engineering-blogs.html"
+            >Top 9 Engineering Blogs</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/twitter-1-0-tech-stack.html"
+            >Twitter 1.0 Tech Stack</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/twitter-architecture-2022-vs-2012.html"
+            >Twitter Architecture 2022 vs. 2012</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/uber-tech-stack-ci-cd.html"
+            >Uber Tech Stack - CI/CD</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/uber-tech-stack.html"
+            >Uber Tech Stack</a
+          ><a
+            class="post-link"
+            href="real-world-case-studies/what-is-the-journey-of-a-slack-message.html"
+            >What is the Journey of a Slack Message?</a
+          >
+        </div>
+      </div>
+      <div class="section" id="ai-and-machine-learning">
+        <div class="section-header">
+          <span class="section-icon">🤖</span>
+          <h2 class="section-name">AI and Machine Learning</h2>
+          <span class="section-count">8</span>
+        </div>
+        <div class="post-list">
+          <a
+            class="post-link"
+            href="ai-and-machine-learning/5-functions-to-merge-data-with-pandas.html"
+            >5 Functions to Merge Data with Pandas</a
+          ><a
+            class="post-link"
+            href="ai-and-machine-learning/chatgpt-timeline.html"
+            >ChatGPT Timeline</a
+          ><a
+            class="post-link"
+            href="ai-and-machine-learning/data-pipelines-overview.html"
+            >Data Pipelines Overview</a
+          ><a
+            class="post-link"
+            href="ai-and-machine-learning/deepseek-1-pager.html"
+            >DeepSeek 1-Pager</a
+          ><a
+            class="post-link"
+            href="ai-and-machine-learning/how-does-chatgpt-work.html"
+            >How does ChatGPT work?</a
+          ><a
+            class="post-link"
+            href="ai-and-machine-learning/key-data-terms.html"
+            >Key Data Terms</a
+          ><a
+            class="post-link"
+            href="ai-and-machine-learning/the-open-source-ai-stack.html"
+            >The Open Source AI Stack</a
+          ><a
+            class="post-link"
+            href="ai-and-machine-learning/what-is-an-ai-agent.html"
+            >What is an AI Agent?</a
+          >
+        </div>
+      </div>
+      <div class="section" id="database-and-storage">
+        <div class="section-header">
+          <span class="section-icon">🗄️</span>
+          <h2 class="section-name">Database and Storage</h2>
+          <span class="section-count">47</span>
+        </div>
+        <div class="post-list">
+          <a
+            class="post-link"
+            href="database-and-storage/7-must-know-strategies-to-scale-your-database.html"
+            >7 Must-Know Strategies to Scale Your Database</a
+          ><a
+            class="post-link"
+            href="database-and-storage/8-data-structures-that-power-your-databases.html"
+            >8 Data Structures That Power Your Databases</a
+          ><a
+            class="post-link"
+            href="database-and-storage/a-cheatsheet-on-database-performance.html"
+            >A Cheatsheet on Database Performance</a
+          ><a
+            class="post-link"
+            href="database-and-storage/a-crash-course-on-database-sharding.html"
+            >A Crash Course on Database Sharding</a
+          ><a
+            class="post-link"
+            href="database-and-storage/b-tree-vs-lsm-tree.html"
+            >B-Tree vs. LSM-Tree</a
+          ><a
+            class="post-link"
+            href="database-and-storage/can-kafka-lose-messages.html"
+            >Can Kafka Lose Messages?</a
+          ><a
+            class="post-link"
+            href="database-and-storage/cap-theorem-one-of-the-most-misunderstood-terms.html"
+            >CAP Theorem: One of the Most Misunderstood Terms</a
+          ><a
+            class="post-link"
+            href="database-and-storage/change-data-capture-key-to-leverage-real-time-data.html"
+            >Change Data Capture: Key to Leverage Real-time Data</a
+          ><a
+            class="post-link"
+            href="database-and-storage/cloud-database-cheat-sheet.html"
+            >Cloud Database Cheat Sheet</a
+          ><a
+            class="post-link"
+            href="database-and-storage/consistent-hashing-explained.html"
+            >Consistent Hashing Explained</a
+          ><a
+            class="post-link"
+            href="database-and-storage/database-isolation-levels.html"
+            >Database Isolation Levels</a
+          ><a
+            class="post-link"
+            href="database-and-storage/database-locks-explained.html"
+            >Database Locks Explained</a
+          ><a
+            class="post-link"
+            href="database-and-storage/delivery-semantics.html"
+            >Delivery Semantics</a
+          ><a
+            class="post-link"
+            href="database-and-storage/differences-in-event-sourcing-system-design.html"
+            >Differences in Event Sourcing System Design</a
+          ><a class="post-link" href="database-and-storage/erasure-coding.html"
+            >Erasure Coding</a
+          ><a
+            class="post-link"
+            href="database-and-storage/explain-the-top-6-use-cases-of-object-stores.html"
+            >Explain the Top 6 Use Cases of Object Stores</a
+          ><a
+            class="post-link"
+            href="database-and-storage/explaining-the-4-most-commonly-used-types-of-queues.html"
+            >Explaining the 4 Most Commonly Used Types of Queues</a
+          ><a
+            class="post-link"
+            href="database-and-storage/how-to-choose-the-right-database.html"
+            >How to Choose the Right Database</a
+          ><a
+            class="post-link"
+            href="database-and-storage/how-to-decide-which-type-of-database-to-use.html"
+            >How to Decide Which Type of Database to Use</a
+          ><a
+            class="post-link"
+            href="database-and-storage/how-to-implement-read-replica-pattern.html"
+            >How to Implement Read Replica Pattern</a
+          ><a
+            class="post-link"
+            href="database-and-storage/how-to-upload-a-large-file-to-s3.html"
+            >How to Upload a Large File to S3</a
+          ><a
+            class="post-link"
+            href="database-and-storage/ibm-mq-rabbitmq-kafka-pulsar-message-queue-evolution.html"
+            >IBM MQ -> RabbitMQ -> Kafka -> Pulsar: Message Queue Evolution</a
+          ><a
+            class="post-link"
+            href="database-and-storage/iqiyi-database-selection-trees.html"
+            >iQIYI Database Selection Trees</a
+          ><a
+            class="post-link"
+            href="database-and-storage/is-postgresql-eating-the-database-world.html"
+            >Is PostgreSQL Eating the Database World?</a
+          ><a
+            class="post-link"
+            href="database-and-storage/key-concepts-to-understand-database-sharding.html"
+            >Key Concepts to Understand Database Sharding</a
+          ><a
+            class="post-link"
+            href="database-and-storage/pessimistic-vs-optimistic-locking.html"
+            >Pessimistic vs Optimistic Locking</a
+          ><a
+            class="post-link"
+            href="database-and-storage/read-replica-pattern.html"
+            >Read Replica Pattern</a
+          ><a
+            class="post-link"
+            href="database-and-storage/smooth-data-migration-with-avro.html"
+            >Smooth Data Migration with Avro</a
+          ><a
+            class="post-link"
+            href="database-and-storage/sql-statement-execution-in-database.html"
+            >SQL Statement Execution in Database</a
+          ><a
+            class="post-link"
+            href="database-and-storage/storage-systems-overview.html"
+            >Storage Systems Overview</a
+          ><a
+            class="post-link"
+            href="database-and-storage/the-ultimate-kafka-101-you-cannot-miss.html"
+            >The Ultimate Kafka 101 You Cannot Miss</a
+          ><a
+            class="post-link"
+            href="database-and-storage/time-series-db-tsdb-in-20-lines.html"
+            >Time Series DB (TSDB) in 20 Lines</a
+          ><a
+            class="post-link"
+            href="database-and-storage/top-10-most-popular-open-source-databases.html"
+            >Top 10 Most Popular Open-Source Databases</a
+          ><a
+            class="post-link"
+            href="database-and-storage/top-4-data-sharding-algorithms-explained.html"
+            >Top 4 Data Sharding Algorithms Explained</a
+          ><a
+            class="post-link"
+            href="database-and-storage/top-5-kafka-use-cases.html"
+            >Top 5 Kafka Use Cases</a
+          ><a
+            class="post-link"
+            href="database-and-storage/top-6-data-management-patterns.html"
+            >Top 6 Data Management Patterns</a
+          ><a
+            class="post-link"
+            href="database-and-storage/top-6-database-models.html"
+            >Top 6 Database Models</a
+          ><a
+            class="post-link"
+            href="database-and-storage/top-eventual-consistency-patterns-you-must-know.html"
+            >Top Eventual Consistency Patterns You Must Know</a
+          ><a
+            class="post-link"
+            href="database-and-storage/types-of-databases.html"
+            >Types of Databases</a
+          ><a
+            class="post-link"
+            href="database-and-storage/types-of-memory-and-storage.html"
+            >Types of Memory and Storage</a
+          ><a class="post-link" href="database-and-storage/types-of-memory.html"
+            >Types of Memory</a
+          ><a
+            class="post-link"
+            href="database-and-storage/types-of-message-queues.html"
+            >Types of Message Queues</a
+          ><a
+            class="post-link"
+            href="database-and-storage/understanding-database-types.html"
+            >Understanding Database Types</a
+          ><a
+            class="post-link"
+            href="database-and-storage/what-does-acid-mean.html"
+            >What does ACID mean?</a
+          ><a
+            class="post-link"
+            href="database-and-storage/what-is-serverless-db.html"
+            >What is Serverless DB?</a
+          ><a
+            class="post-link"
+            href="database-and-storage/why-is-kafka-fast.html"
+            >Why is Kafka Fast?</a
+          ><a
+            class="post-link"
+            href="database-and-storage/why-postgresql-is-the-most-loved-database.html"
+            >Why PostgreSQL is the Most Loved Database</a
+          >
+        </div>
+      </div>
+      <div class="section" id="technical-interviews">
+        <div class="section-header">
+          <span class="section-icon">🎯</span>
+          <h2 class="section-name">Technical Interviews</h2>
+          <span class="section-count">5</span>
+        </div>
+        <div class="post-list">
+          <a
+            class="post-link"
+            href="technical-interviews/how-do-sql-joins-work.html"
+            >How do SQL Joins Work?</a
+          ><a
+            class="post-link"
+            href="technical-interviews/how-to-ace-system-design-interviews.html"
+            >How to Ace System Design Interviews</a
+          ><a
+            class="post-link"
+            href="technical-interviews/recommended-materials-for-technical-interviews.html"
+            >Recommended Materials for Technical Interviews</a
+          ><a
+            class="post-link"
+            href="technical-interviews/what-happens-when-you-type-a-url-into-your-browser.html"
+            >What Happens When You Type a URL Into Your Browser?</a
+          ><a
+            class="post-link"
+            href="technical-interviews/what-happens-when-you-type-google-com-into-a-browser.html"
+            >What Happens When You Type google.com Into a Browser?</a
+          >
+        </div>
+      </div>
+      <div class="section" id="caching-and-performance">
+        <div class="section-header">
+          <span class="section-icon">⚡</span>
+          <h2 class="section-name">Caching and Performance</h2>
+          <span class="section-count">29</span>
+        </div>
+        <div class="post-list">
+          <a
+            class="post-link"
+            href="caching-and-performance/a-beginner-s-guide-to-cdn.html"
+            >A Beginner's Guide to CDN</a
+          ><a
+            class="post-link"
+            href="caching-and-performance/cache-eviction-policies.html"
+            >Cache Eviction Policies</a
+          ><a
+            class="post-link"
+            href="caching-and-performance/cache-miss-attack.html"
+            >Cache Miss Attack</a
+          ><a
+            class="post-link"
+            href="caching-and-performance/cache-systems-every-developer-should-know.html"
+            >Cache Systems Every Developer Should Know</a
+          ><a
+            class="post-link"
+            href="caching-and-performance/frontend-performance-optimization.html"
+            >Frontend Performance Optimization</a
+          ><a
+            class="post-link"
+            href="caching-and-performance/how-big-keys-impact-redis-persistence.html"
+            >How Big Keys Impact Redis Persistence</a
+          ><a
+            class="post-link"
+            href="caching-and-performance/how-can-cache-systems-go-wrong.html"
+            >How Can Cache Systems Go Wrong?</a
+          ><a
+            class="post-link"
+            href="caching-and-performance/how-can-redis-be-used.html"
+            >How can Redis be used?</a
+          ><a
+            class="post-link"
+            href="caching-and-performance/how-does-cdn-work.html"
+            >How Does CDN Work?</a
+          ><a
+            class="post-link"
+            href="caching-and-performance/how-does-redis-persist-data.html"
+            >How Does Redis Persist Data?</a
+          ><a
+            class="post-link"
+            href="caching-and-performance/how-redis-architecture-evolved.html"
+            >How Redis Architecture Evolved</a
+          ><a
+            class="post-link"
+            href="caching-and-performance/how-to-learn-elasticsearch.html"
+            >How to Learn Elasticsearch</a
+          ><a class="post-link" href="caching-and-performance/learn-cache.html"
+            >Learn Cache</a
+          ><a
+            class="post-link"
+            href="caching-and-performance/low-latency-stock-exchange.html"
+            >Low Latency Stock Exchange</a
+          ><a
+            class="post-link"
+            href="caching-and-performance/memcached-vs-redis.html"
+            >Memcached vs Redis</a
+          ><a
+            class="post-link"
+            href="caching-and-performance/the-ultimate-redis-101.html"
+            >The Ultimate Redis 101</a
+          ><a
+            class="post-link"
+            href="caching-and-performance/things-to-consider-when-using-cache.html"
+            >Things to Consider When Using Cache</a
+          ><a
+            class="post-link"
+            href="caching-and-performance/top-5-caching-strategies.html"
+            >Top 5 Caching Strategies</a
+          ><a
+            class="post-link"
+            href="caching-and-performance/top-5-common-ways-to-improve-api-performance.html"
+            >Top 5 Common Ways to Improve API Performance</a
+          ><a
+            class="post-link"
+            href="caching-and-performance/top-5-strategies-to-reduce-latency.html"
+            >Top 5 Strategies to Reduce Latency</a
+          ><a
+            class="post-link"
+            href="caching-and-performance/top-6-elasticsearch-use-cases.html"
+            >Top 6 Elasticsearch Use Cases</a
+          ><a
+            class="post-link"
+            href="caching-and-performance/top-8-cache-eviction-strategies.html"
+            >Top 8 Cache Eviction Strategies</a
+          ><a
+            class="post-link"
+            href="caching-and-performance/top-9-website-performance-metrics-you-cannot-ignore.html"
+            >Top 9 Website Performance Metrics You Cannot Ignore</a
+          ><a
+            class="post-link"
+            href="caching-and-performance/top-caching-strategies.html"
+            >Top Caching Strategies</a
+          ><a
+            class="post-link"
+            href="caching-and-performance/what-is-cdn-content-delivery-network.html"
+            >What is CDN (Content Delivery Network)?</a
+          ><a
+            class="post-link"
+            href="caching-and-performance/what-is-elk-stack-and-why-is-it-popular.html"
+            >What is ELK Stack and Why is it Popular?</a
+          ><a
+            class="post-link"
+            href="caching-and-performance/which-latency-numbers-should-you-know.html"
+            >Which Latency Numbers Should You Know?</a
+          ><a
+            class="post-link"
+            href="caching-and-performance/why-are-content-delivery-networks-cdn-so-popular.html"
+            >Why are Content Delivery Networks (CDN) so Popular?</a
+          ><a
+            class="post-link"
+            href="caching-and-performance/why-is-redis-so-fast.html"
+            >Why is Redis so Fast?</a
+          >
+        </div>
+      </div>
+      <div class="section" id="payment-and-fintech">
+        <div class="section-header">
+          <span class="section-icon">💳</span>
+          <h2 class="section-name">Payment and Fintech</h2>
+          <span class="section-count">20</span>
+        </div>
+        <div class="post-list">
+          <a
+            class="post-link"
+            href="payment-and-fintech/4-ways-of-qr-code-payment.html"
+            >4 Ways of QR Code Payment</a
+          ><a
+            class="post-link"
+            href="payment-and-fintech/digital-wallets-banks-vs-blockchain.html"
+            >Digital Wallets: Banks vs. Blockchain</a
+          ><a
+            class="post-link"
+            href="payment-and-fintech/e-commerce-workflow.html"
+            >E-commerce Workflow</a
+          ><a
+            class="post-link"
+            href="payment-and-fintech/foreign-exchange-payments.html"
+            >Foreign Exchange Payments</a
+          ><a
+            class="post-link"
+            href="payment-and-fintech/handling-hotspot-accounts.html"
+            >Handling Hotspot Accounts</a
+          ><a
+            class="post-link"
+            href="payment-and-fintech/how-ach-payment-works.html"
+            >How ACH Payment Works</a
+          ><a
+            class="post-link"
+            href="payment-and-fintech/how-do-apple-pay-and-google-pay-work.html"
+            >How do Apple Pay and Google Pay work?</a
+          ><a
+            class="post-link"
+            href="payment-and-fintech/how-does-visa-make-money.html"
+            >How does Visa make money?</a
+          ><a
+            class="post-link"
+            href="payment-and-fintech/how-scan-to-pay-works.html"
+            >How Scan to Pay Works</a
+          ><a
+            class="post-link"
+            href="payment-and-fintech/how-to-avoid-double-payment.html"
+            >How to Avoid Double Payment</a
+          ><a
+            class="post-link"
+            href="payment-and-fintech/how-to-learn-payments.html"
+            >How to Learn Payments</a
+          ><a
+            class="post-link"
+            href="payment-and-fintech/how-visa-works-when-swiping-a-credit-card.html"
+            >How VISA Works When Swiping a Credit Card</a
+          ><a class="post-link" href="payment-and-fintech/money-movement.html"
+            >Money Movement</a
+          ><a class="post-link" href="payment-and-fintech/payment-system.html"
+            >Payment System</a
+          ><a
+            class="post-link"
+            href="payment-and-fintech/reconciliation-in-payment.html"
+            >Reconciliation in Payment</a
+          ><a
+            class="post-link"
+            href="payment-and-fintech/swift-payment-messaging-system.html"
+            >SWIFT Payment Messaging System</a
+          ><a
+            class="post-link"
+            href="payment-and-fintech/the-payments-ecosystem.html"
+            >The Payments Ecosystem</a
+          ><a
+            class="post-link"
+            href="payment-and-fintech/unified-payments-interface-upi.html"
+            >Unified Payments Interface (UPI)</a
+          ><a
+            class="post-link"
+            href="payment-and-fintech/what-is-a-stop-loss-order-and-how-does-it-work.html"
+            >What is a Stop-Loss Order and How Does it Work?</a
+          ><a
+            class="post-link"
+            href="payment-and-fintech/what-is-web-3-0-why-doesn-t-it-have-ads.html"
+            >What is Web 3.0? Why doesn't it have ads?</a
+          >
+        </div>
+      </div>
+      <div class="section" id="software-architecture">
+        <div class="section-header">
+          <span class="section-icon">🏛️</span>
+          <h2 class="section-name">Software Architecture</h2>
+          <span class="section-count">24</span>
+        </div>
+        <div class="post-list">
+          <a
+            class="post-link"
+            href="software-architecture/10-system-design-tradeoffs-you-cannot-ignore.html"
+            >10 System Design Tradeoffs You Cannot Ignore</a
+          ><a
+            class="post-link"
+            href="software-architecture/18-key-design-patterns-every-developer-should-know.html"
+            >18 Key Design Patterns Every Developer Should Know</a
+          ><a
+            class="post-link"
+            href="software-architecture/6-software-architectural-patterns-you-must-know.html"
+            >6 Software Architectural Patterns You Must Know</a
+          ><a
+            class="post-link"
+            href="software-architecture/8-common-system-design-problems-and-solutions.html"
+            >8 Common System Design Problems and Solutions</a
+          ><a
+            class="post-link"
+            href="software-architecture/8-key-concepts-in-domain-driven-design.html"
+            >8 Key Concepts in Domain-Driven Design</a
+          ><a
+            class="post-link"
+            href="software-architecture/8-key-oop-concepts-every-developer-should-know.html"
+            >8 Key OOP Concepts Every Developer Should Know</a
+          ><a
+            class="post-link"
+            href="software-architecture/9-best-practices-for-building-microservices.html"
+            >9 Best Practices for Building Microservices</a
+          ><a
+            class="post-link"
+            href="software-architecture/9-best-practices-for-developing-microservices.html"
+            >9 Best Practices for Developing Microservices</a
+          ><a
+            class="post-link"
+            href="software-architecture/9-essential-components-of-a-production-microservice-application.html"
+            >9 Essential Components of a Production Microservice Application</a
+          ><a
+            class="post-link"
+            href="software-architecture/amazon-prime-video-monitoring-service.html"
+            >Amazon Prime Video Monitoring Service</a
+          ><a
+            class="post-link"
+            href="software-architecture/database-middleware.html"
+            >Database Middleware</a
+          ><a
+            class="post-link"
+            href="software-architecture/design-patterns-cheat-sheet.html"
+            >Design Patterns Cheat Sheet</a
+          ><a
+            class="post-link"
+            href="software-architecture/how-do-computer-programs-run.html"
+            >How Do Computer Programs Run?</a
+          ><a
+            class="post-link"
+            href="software-architecture/how-to-release-a-mobile-app.html"
+            >How To Release A Mobile App</a
+          ><a
+            class="post-link"
+            href="software-architecture/inter-process-communication-on-linux.html"
+            >Inter-Process Communication on Linux</a
+          ><a
+            class="post-link"
+            href="software-architecture/is-microservice-architecture-the-silver-bullet.html"
+            >Is Microservice Architecture the Silver Bullet?</a
+          ><a
+            class="post-link"
+            href="software-architecture/key-terms-in-domain-driven-design.html"
+            >Key Terms in Domain-Driven Design</a
+          ><a
+            class="post-link"
+            href="software-architecture/linux-boot-process-explained.html"
+            >Linux Boot Process Explained</a
+          ><a
+            class="post-link"
+            href="software-architecture/mvc-mvp-mvvm-viper-patterns.html"
+            >MVC, MVP, MVVM, VIPER Patterns</a
+          ><a
+            class="post-link"
+            href="software-architecture/orchestration-vs-choreography-in-microservices.html"
+            >Orchestration vs. Choreography in Microservices</a
+          ><a
+            class="post-link"
+            href="software-architecture/the-ultimate-software-architect-knowledge-map.html"
+            >The Ultimate Software Architect Knowledge Map</a
+          ><a
+            class="post-link"
+            href="software-architecture/top-5-software-architectural-patterns.html"
+            >Top 5 Software Architectural Patterns</a
+          ><a
+            class="post-link"
+            href="software-architecture/typical-microservice-architecture.html"
+            >Typical Microservice Architecture</a
+          ><a
+            class="post-link"
+            href="software-architecture/uml-class-diagrams-cheatsheet.html"
+            >UML Class Diagrams Cheatsheet</a
+          >
+        </div>
+      </div>
+      <div class="section" id="devtools-and-productivity">
+        <div class="section-header">
+          <span class="section-icon">🛠️</span>
+          <h2 class="section-name">DevTools and Productivity</h2>
+          <span class="section-count">20</span>
+        </div>
+        <div class="post-list">
+          <a
+            class="post-link"
+            href="devtools-and-productivity/15-open-source-projects-that-changed-the-world.html"
+            >15 Open-Source Projects That Changed the World</a
+          ><a
+            class="post-link"
+            href="devtools-and-productivity/20-popular-open-source-projects-started-by-big-companies.html"
+            >20 Popular Open Source Projects Started by Big Companies</a
+          ><a
+            class="post-link"
+            href="devtools-and-productivity/30-useful-ai-apps-that-can-help-you-in-2025.html"
+            >30 Useful AI Apps That Can Help You in 2025</a
+          ><a
+            class="post-link"
+            href="devtools-and-productivity/5-important-components-of-linux.html"
+            >5 Important Components of Linux</a
+          ><a
+            class="post-link"
+            href="devtools-and-productivity/diagram-as-code.html"
+            >Diagram as Code</a
+          ><a
+            class="post-link"
+            href="devtools-and-productivity/git-commands-cheat-sheet.html"
+            >Git Commands Cheat Sheet</a
+          ><a
+            class="post-link"
+            href="devtools-and-productivity/git-merge-vs-git-rebase.html"
+            >Git Merge vs. Git Rebase</a
+          ><a
+            class="post-link"
+            href="devtools-and-productivity/git-vs-github.html"
+            >Git vs GitHub</a
+          ><a
+            class="post-link"
+            href="devtools-and-productivity/how-do-companies-ship-code-to-production.html"
+            >How do Companies Ship Code to Production?</a
+          ><a
+            class="post-link"
+            href="devtools-and-productivity/how-does-git-work.html"
+            >How does Git Work?</a
+          ><a
+            class="post-link"
+            href="devtools-and-productivity/how-git-works.html"
+            >How Git Works</a
+          ><a
+            class="post-link"
+            href="devtools-and-productivity/json-crack-visualize-json-files.html"
+            >JSON Crack: Visualize JSON Files</a
+          ><a
+            class="post-link"
+            href="devtools-and-productivity/life-is-short-use-dev-tools.html"
+            >Life is Short, Use Dev Tools</a
+          ><a
+            class="post-link"
+            href="devtools-and-productivity/linux-file-permissions-illustrated.html"
+            >Linux File Permissions Illustrated</a
+          ><a
+            class="post-link"
+            href="devtools-and-productivity/linux-file-system-explained.html"
+            >Linux File System Explained</a
+          ><a
+            class="post-link"
+            href="devtools-and-productivity/making-sense-of-search-engine-optimization.html"
+            >Making Sense of Search Engine Optimization</a
+          ><a
+            class="post-link"
+            href="devtools-and-productivity/most-used-linux-commands-map.html"
+            >Most Used Linux Commands Map</a
+          ><a
+            class="post-link"
+            href="devtools-and-productivity/tools-for-shipping-code-to-production.html"
+            >Tools for Shipping Code to Production</a
+          ><a
+            class="post-link"
+            href="devtools-and-productivity/top-6-tools-to-turn-code-into-beautiful-diagrams.html"
+            >Top 6 Tools to Turn Code into Beautiful Diagrams</a
+          ><a
+            class="post-link"
+            href="devtools-and-productivity/top-9-causes-of-100-cpu-usage.html"
+            >Top 9 Causes of 100% CPU Usage</a
+          >
+        </div>
+      </div>
+      <div class="section" id="software-development">
+        <div class="section-header">
+          <span class="section-icon">💻</span>
+          <h2 class="section-name">Software Development</h2>
+          <span class="section-count">28</span>
+        </div>
+        <div class="post-list">
+          <a
+            class="post-link"
+            href="software-development/10-books-for-software-developers.html"
+            >10 Books for Software Developers</a
+          ><a
+            class="post-link"
+            href="software-development/10-good-coding-principles-to-improve-code-quality.html"
+            >10 Good Coding Principles to Improve Code Quality</a
+          ><a
+            class="post-link"
+            href="software-development/10-key-data-structures-we-use-every-day.html"
+            >10 Key Data Structures We Use Every Day</a
+          ><a
+            class="post-link"
+            href="software-development/11-steps-to-go-from-junior-to-senior-developer.html"
+            >11 Steps to Go From Junior to Senior Developer</a
+          ><a
+            class="post-link"
+            href="software-development/a-brief-history-of-programming-languages.html"
+            >A Brief History of Programming Languages</a
+          ><a
+            class="post-link"
+            href="software-development/a-roadmap-for-full-stack-development.html"
+            >A Roadmap for Full-Stack Development</a
+          ><a
+            class="post-link"
+            href="software-development/algorithms-for-system-design-interviews.html"
+            >Algorithms for System Design Interviews</a
+          ><a
+            class="post-link"
+            href="software-development/big-endian-vs-little-endian.html"
+            >Big Endian vs Little Endian</a
+          ><a
+            class="post-link"
+            href="software-development/blocking-vs-non-blocking-queue.html"
+            >Blocking vs Non-Blocking Queue</a
+          ><a
+            class="post-link"
+            href="software-development/concurrency-vs-parallelism.html"
+            >Concurrency vs Parallelism</a
+          ><a
+            class="post-link"
+            href="software-development/data-transmission-between-applications.html"
+            >Data Transmission Between Applications</a
+          ><a
+            class="post-link"
+            href="software-development/explaining-9-types-of-api-testing.html"
+            >Explaining 9 Types of API Testing</a
+          ><a
+            class="post-link"
+            href="software-development/how-do-c-java-python-work.html"
+            >How Do C++, Java, Python Work?</a
+          ><a
+            class="post-link"
+            href="software-development/how-does-garbage-collection-work.html"
+            >How does Garbage Collection work?</a
+          ><a
+            class="post-link"
+            href="software-development/how-to-avoid-crawling-duplicate-urls-at-google-scale.html"
+            >How to Avoid Crawling Duplicate URLs at Google Scale?</a
+          ><a
+            class="post-link"
+            href="software-development/imperative-vs-functional-vs-object-oriented-programming.html"
+            >Imperative vs Functional vs Object-oriented Programming</a
+          ><a
+            class="post-link"
+            href="software-development/java-collection-hierarchy.html"
+            >Java Collection Hierarchy</a
+          ><a
+            class="post-link"
+            href="software-development/linux-boot-process-explained.html"
+            >Linux Boot Process Explained</a
+          ><a
+            class="post-link"
+            href="software-development/running-c-c-or-rust-in-a-web-browser.html"
+            >Running C, C++, or Rust in a Web Browser</a
+          ><a
+            class="post-link"
+            href="software-development/the-9-algorithms-that-dominate-our-world.html"
+            >The 9 Algorithms That Dominate Our World</a
+          ><a
+            class="post-link"
+            href="software-development/the-fundamental-pillars-of-object-oriented-programming.html"
+            >The Fundamental Pillars of Object-Oriented Programming</a
+          ><a
+            class="post-link"
+            href="software-development/top-6-load-balancing-algorithms.html"
+            >Top 6 Load Balancing Algorithms</a
+          ><a
+            class="post-link"
+            href="software-development/top-6-most-commonly-used-server-types.html"
+            >Top 6 Most Commonly Used Server Types</a
+          ><a
+            class="post-link"
+            href="software-development/top-6-multithreading-design-patterns-you-must-know.html"
+            >Top 6 Multithreading Design Patterns You Must Know</a
+          ><a
+            class="post-link"
+            href="software-development/top-8-c-use-cases.html"
+            >Top 8 C++ Use Cases</a
+          ><a
+            class="post-link"
+            href="software-development/top-8-programming-paradigms.html"
+            >Top 8 Programming Paradigms</a
+          ><a
+            class="post-link"
+            href="software-development/top-8-standards-every-developer-should-know.html"
+            >Top 8 Standards Every Developer Should Know</a
+          ><a
+            class="post-link"
+            href="software-development/what-are-the-greenest-programming-languages.html"
+            >What Are the Greenest Programming Languages?</a
+          >
+        </div>
+      </div>
+      <div class="section" id="cloud-and-distributed-systems">
+        <div class="section-header">
+          <span class="section-icon">☁️</span>
+          <h2 class="section-name">Cloud and Distributed Systems</h2>
+          <span class="section-count">49</span>
+        </div>
+        <div class="post-list">
+          <a
+            class="post-link"
+            href="cloud-and-distributed-systems/2-decades-of-cloud-evolution.html"
+            >2 Decades of Cloud Evolution</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/25-papers-that-completely-transformed-the-computer-world.html"
+            >25 Papers That Completely Transformed the Computer World</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/8-must-know-scalability-strategies.html"
+            >8 Must-Know Scalability Strategies</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/a-cheat-sheet-for-designing-fault-tolerant-systems.html"
+            >A Cheat Sheet for Designing Fault-Tolerant Systems</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/a-cheat-sheet-for-system-designs.html"
+            >A cheat sheet for system designs</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/a-crash-course-on-architectural-scalability.html"
+            >A Crash Course on Architectural Scalability</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/amazon-s-build-system-brazil.html"
+            >Amazon's Build System: Brazil</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/aws-services-cheat-sheet.html"
+            >AWS Services Cheat Sheet</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/aws-services-evolution.html"
+            >AWS Services Evolution</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/azure-services-cheat-sheet.html"
+            >Azure Services Cheat Sheet</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/big-data-pipeline-cheatsheet-for-aws-azure-and-google-cloud.html"
+            >Big Data Pipeline Cheatsheet for AWS, Azure, and Google Cloud</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/cap-base-solid-kiss-what-do-these-acronyms-mean.html"
+            >CAP, BASE, SOLID, KISS, What do these acronyms mean?</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/cloud-comparison-cheat-sheet.html"
+            >Cloud Comparison Cheat Sheet</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/cloud-cost-reduction-techniques.html"
+            >Cloud Cost Reduction Techniques</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/cloud-disaster-recovery-strategies.html"
+            >Cloud Disaster Recovery Strategies</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/cloud-load-balancer-cheat-sheet.html"
+            >Cloud Load Balancer Cheat Sheet</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/cloud-monitoring-cheat-sheet.html"
+            >Cloud Monitoring Cheat Sheet</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/explaining-5-unique-id-generators.html"
+            >Explaining 5 Unique ID Generators</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/hidden-costs-of-the-cloud.html"
+            >Hidden Costs of the Cloud</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/how-aws-lambda-works-behind-the-scenes.html"
+            >How AWS Lambda Works Behind the Scenes</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/how-do-we-incorporate-event-sourcing-into-systems.html"
+            >How do we incorporate Event Sourcing into systems?</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/how-do-we-manage-configurations-in-a-system.html"
+            >How do we manage configurations in a system?</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/how-to-design-for-high-availability.html"
+            >How to Design for High Availability</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/how-to-detect-node-failures-in-distributed-systems.html"
+            >How to Detect Node Failures in Distributed Systems</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/how-to-handle-web-request-errors.html"
+            >How to Handle Web Request Errors</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/how-to-transform-a-system-to-be-cloud-native.html"
+            >How to Transform a System to be Cloud Native</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/infrastructure-as-code-landscape-cheatsheet.html"
+            >Infrastructure as Code Landscape Cheatsheet</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/monorepo-vs-microrepo-which-is-best.html"
+            >Monorepo vs. Microrepo: Which is Best?</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/most-important-aws-services-to-learn.html"
+            >Most Important AWS Services to Learn</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/must-know-system-design-building-blocks.html"
+            >Must Know System Design Building Blocks</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/resiliency-patterns.html"
+            >Resiliency Patterns</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/retry-strategies-for-system-failures.html"
+            >Retry Strategies for System Failures</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/scaling-websites-for-millions-of-users.html"
+            >Scaling Websites for Millions of Users</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/system-design-blueprint-the-ultimate-guide.html"
+            >System Design Blueprint: The Ultimate Guide</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/system-design-cheat-sheet.html"
+            >System Design Cheat Sheet</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/the-12-factor-app.html"
+            >The 12-Factor App</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/the-fantastic-four-of-system-design.html"
+            >The Fantastic Four of System Design</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/top-5-trade-offs-in-system-designs.html"
+            >Top 5 Trade-offs in System Designs</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/top-6-cases-to-apply-idempotency.html"
+            >Top 6 Cases to Apply Idempotency</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/top-6-cloud-messaging-patterns.html"
+            >Top 6 Cloud Messaging Patterns</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/top-7-most-used-distributed-system-patterns.html"
+            >Top 7 Most-Used Distributed System Patterns</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/top-9-architectural-patterns-for-data-and-communication-flow.html"
+            >Top 9 Architectural Patterns for Data and Communication Flow</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/typical-aws-network-architecture.html"
+            >Typical AWS Network Architecture</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/unique-id-generator.html"
+            >Unique ID Generator</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/vertical-vs-horizontal-partitioning.html"
+            >Vertical vs Horizontal Partitioning</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/what-is-cloud-native.html"
+            >What is Cloud Native?</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/what-makes-aws-lambda-so-fast.html"
+            >What makes AWS Lambda so fast?</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/why-meta-google-and-amazon-stop-using-leap-seconds.html"
+            >Why Meta, Google, and Amazon Stop Using Leap Seconds</a
+          ><a
+            class="post-link"
+            href="cloud-and-distributed-systems/why-use-a-distributed-lock.html"
+            >Why Use a Distributed Lock?</a
+          >
+        </div>
+      </div>
+      <div class="section" id="how-it-works">
+        <div class="section-header">
+          <span class="section-icon">🔍</span>
+          <h2 class="section-name">How it Works</h2>
+          <span class="section-count">18</span>
+        </div>
+        <div class="post-list">
+          <a
+            class="post-link"
+            href="how-it-works/build-a-simple-chat-application-with-redis.html"
+            >Build a Simple Chat Application with Redis</a
+          ><a class="post-link" href="how-it-works/design-gmail.html"
+            >Design Gmail</a
+          ><a class="post-link" href="how-it-works/design-google-maps.html"
+            >Design Google Maps</a
+          ><a class="post-link" href="how-it-works/design-stock-exchange.html"
+            >Design Stock Exchange</a
+          ><a
+            class="post-link"
+            href="how-it-works/designing-a-chat-application.html"
+            >Designing a Chat Application</a
+          ><a
+            class="post-link"
+            href="how-it-works/experiment-platform-architecture.html"
+            >Experiment Platform Architecture</a
+          ><a
+            class="post-link"
+            href="how-it-works/how-are-notifications-pushed-to-our-phones-or-pcs.html"
+            >How are Notifications Pushed to Our Phones or PCs?</a
+          ><a class="post-link" href="how-it-works/how-do-airtags-work.html"
+            >How do AirTags work?</a
+          ><a
+            class="post-link"
+            href="how-it-works/how-do-search-engines-work.html"
+            >How Do Search Engines Work?</a
+          ><a
+            class="post-link"
+            href="how-it-works/how-google-apple-maps-blur-license-plates-and-faces.html"
+            >How Google/Apple Maps Blur License Plates and Faces</a
+          ><a class="post-link" href="how-it-works/how-is-email-delivered.html"
+            >How is Email Delivered?</a
+          ><a
+            class="post-link"
+            href="how-it-works/how-to-design-a-system-for-internationalization.html"
+            >How to Design a System for Internationalization</a
+          ><a
+            class="post-link"
+            href="how-it-works/how-to-design-google-docs.html"
+            >How to Design Google Docs</a
+          ><a
+            class="post-link"
+            href="how-it-works/live-streaming-explained.html"
+            >Live Streaming Explained</a
+          ><a class="post-link" href="how-it-works/payment-system.html"
+            >Payment System</a
+          ><a class="post-link" href="how-it-works/proximity-service.html"
+            >Proximity Service</a
+          ><a class="post-link" href="how-it-works/quadtree.html">Quadtree</a
+          ><a
+            class="post-link"
+            href="how-it-works/what-happens-when-you-upload-a-file-to-amazon-s3.html"
+            >What Happens When You Upload a File to Amazon S3?</a
+          >
+        </div>
+      </div>
+      <div class="section" id="devops-and-ci-cd">
+        <div class="section-header">
+          <span class="section-icon">🚀</span>
+          <h2 class="section-name">DevOps and CI/CD</h2>
+          <span class="section-count">27</span>
+        </div>
+        <div class="post-list">
+          <a
+            class="post-link"
+            href="devops-and-ci-cd/9-docker-best-practices-you-must-know.html"
+            >9 Docker Best Practices You Must Know</a
+          ><a
+            class="post-link"
+            href="devops-and-ci-cd/choose-the-right-database-for-metric-collection.html"
+            >Choose the Right Database for Metric Collection</a
+          ><a
+            class="post-link"
+            href="devops-and-ci-cd/ci-cd-pipeline-explained-in-simple-terms.html"
+            >CI/CD Pipeline Explained in Simple Terms</a
+          ><a
+            class="post-link"
+            href="devops-and-ci-cd/ci-cd-simplified-visual-guide.html"
+            >CI/CD Simplified Visual Guide</a
+          ><a
+            class="post-link"
+            href="devops-and-ci-cd/cloud-native-anti-patterns.html"
+            >Cloud Native Anti-Patterns</a
+          ><a
+            class="post-link"
+            href="devops-and-ci-cd/deployment-strategies.html"
+            >Deployment Strategies</a
+          ><a
+            class="post-link"
+            href="devops-and-ci-cd/devops-vs-noops-what-s-the-difference.html"
+            >DevOps vs NoOps: What's the Difference?</a
+          ><a
+            class="post-link"
+            href="devops-and-ci-cd/devops-vs-sre-vs-platform-engineering.html"
+            >DevOps vs. SRE vs. Platform Engineering</a
+          ><a
+            class="post-link"
+            href="devops-and-ci-cd/how-does-docker-work.html"
+            >How does Docker work?</a
+          ><a
+            class="post-link"
+            href="devops-and-ci-cd/how-does-terraform-turn-code-into-cloud.html"
+            >How does Terraform turn Code into Cloud?</a
+          ><a
+            class="post-link"
+            href="devops-and-ci-cd/kubernetes-command-cheatsheet.html"
+            >Kubernetes Command Cheatsheet</a
+          ><a
+            class="post-link"
+            href="devops-and-ci-cd/kubernetes-deployment-strategies.html"
+            >Kubernetes Deployment Strategies</a
+          ><a
+            class="post-link"
+            href="devops-and-ci-cd/kubernetes-periodic-table.html"
+            >Kubernetes Periodic Table</a
+          ><a
+            class="post-link"
+            href="devops-and-ci-cd/kubernetes-tools-ecosystem.html"
+            >Kubernetes Tools Ecosystem</a
+          ><a
+            class="post-link"
+            href="devops-and-ci-cd/kubernetes-tools-stack-wheel.html"
+            >Kubernetes Tools Stack Wheel</a
+          ><a
+            class="post-link"
+            href="devops-and-ci-cd/log-parsing-cheat-sheet.html"
+            >Log Parsing Cheat Sheet</a
+          ><a
+            class="post-link"
+            href="devops-and-ci-cd/logging-tracing-and-metrics.html"
+            >Logging, Tracing, and Metrics</a
+          ><a
+            class="post-link"
+            href="devops-and-ci-cd/netflix-tech-stack-ci-cd-pipeline.html"
+            >Netflix Tech Stack - CI/CD Pipeline</a
+          ><a
+            class="post-link"
+            href="devops-and-ci-cd/paradigm-shift-developer-to-tester-ratio.html"
+            >Paradigm Shift: Developer to Tester Ratio</a
+          ><a
+            class="post-link"
+            href="devops-and-ci-cd/push-vs-pull-in-metrics-collection-systems.html"
+            >Push vs Pull in Metrics Collection Systems</a
+          ><a
+            class="post-link"
+            href="devops-and-ci-cd/some-devops-books-i-find-enlightening.html"
+            >Some DevOps Books I Find Enlightening</a
+          ><a
+            class="post-link"
+            href="devops-and-ci-cd/top-10-kubernetes-design-patterns.html"
+            >Top 10 Kubernetes Design Patterns</a
+          ><a
+            class="post-link"
+            href="devops-and-ci-cd/top-4-kubernetes-service-types.html"
+            >Top 4 Kubernetes Service Types</a
+          ><a
+            class="post-link"
+            href="devops-and-ci-cd/top-5-most-used-deployment-strategies.html"
+            >Top 5 Most-Used Deployment Strategies</a
+          ><a
+            class="post-link"
+            href="devops-and-ci-cd/top-8-must-know-docker-concepts.html"
+            >Top 8 Must-Know Docker Concepts</a
+          ><a
+            class="post-link"
+            href="devops-and-ci-cd/what-is-kubernetes-k8s.html"
+            >What is Kubernetes (k8s)?</a
+          ><a
+            class="post-link"
+            href="devops-and-ci-cd/why-is-nginx-so-popular.html"
+            >Why is Nginx so Popular?</a
+          >
+        </div>
+      </div>
+      <div class="section" id="security">
+        <div class="section-header">
+          <span class="section-icon">🔐</span>
+          <h2 class="section-name">Security</h2>
+          <span class="section-count">35</span>
+        </div>
+        <div class="post-list">
+          <a
+            class="post-link"
+            href="security/cookies-vs-sessions-vs-jwt-vs-paseto.html"
+            >Cookies vs Sessions vs JWT vs PASETO</a
+          ><a class="post-link" href="security/cookies-vs-sessions.html"
+            >Cookies vs Sessions</a
+          ><a class="post-link" href="security/cybersecurity-101.html"
+            >Cybersecurity 101</a
+          ><a
+            class="post-link"
+            href="security/designing-a-permission-system.html"
+            >Designing a Permission System</a
+          ><a
+            class="post-link"
+            href="security/encoding-vs-encryption-vs-tokenization.html"
+            >Encoding vs Encryption vs Tokenization</a
+          ><a
+            class="post-link"
+            href="security/explaining-json-web-token-jwt-to-a-10-year-old-kid.html"
+            >Explaining JSON Web Token (JWT) to a 10 Year Old Kid</a
+          ><a
+            class="post-link"
+            href="security/firewall-explained-to-kids-and-adults.html"
+            >Firewall Explained to Kids and Adults</a
+          ><a class="post-link" href="security/how-digital-signatures-work.html"
+            >How Digital Signatures Work</a
+          ><a
+            class="post-link"
+            href="security/how-do-we-manage-sensitive-data-in-a-system.html"
+            >How do we manage sensitive data in a system?</a
+          ><a class="post-link" href="security/how-does-a-vpn-work.html"
+            >How Does a VPN Work?</a
+          ><a class="post-link" href="security/how-does-https-work.html"
+            >How does HTTPS work?</a
+          ><a class="post-link" href="security/how-does-ssh-work.html"
+            >How does SSH work?</a
+          ><a
+            class="post-link"
+            href="security/how-google-authenticator-works.html"
+            >How Google Authenticator Works</a
+          ><a class="post-link" href="security/how-password-managers-work.html"
+            >How Password Managers Work</a
+          ><a
+            class="post-link"
+            href="security/how-to-design-a-secure-system.html"
+            >How to Design a Secure System</a
+          ><a
+            class="post-link"
+            href="security/http-cookies-explained-with-a-simple-diagram.html"
+            >HTTP Cookies Explained With a Simple Diagram</a
+          ><a
+            class="post-link"
+            href="security/https-ssl-handshake-and-data-encryption-explained.html"
+            >HTTPS, SSL Handshake, and Data Encryption Explained</a
+          ><a class="post-link" href="security/is-https-safe.html"
+            >Is HTTPS Safe?</a
+          ><a
+            class="post-link"
+            href="security/is-passkey-shaping-a-passwordless-future.html"
+            >Is PassKey Shaping a Passwordless Future?</a
+          ><a
+            class="post-link"
+            href="security/jwt-101-key-to-stateless-authentication.html"
+            >JWT 101: Key to Stateless Authentication</a
+          ><a
+            class="post-link"
+            href="security/oauth-2-0-explained-with-simple-terms.html"
+            >OAuth 2.0 Explained With Simple Terms</a
+          ><a class="post-link" href="security/oauth-2-0-flows.html"
+            >OAuth 2.0 Flows</a
+          ><a
+            class="post-link"
+            href="security/session-based-authentication-vs-jwt.html"
+            >Session-based Authentication vs. JWT</a
+          ><a
+            class="post-link"
+            href="security/session-cookie-jwt-token-sso-and-oauth-2-0-explained.html"
+            >Session, Cookie, JWT, Token, SSO, and OAuth 2.0 Explained</a
+          ><a
+            class="post-link"
+            href="security/sessions-tokens-jwt-sso-and-oauth-explained.html"
+            >Sessions, Tokens, JWT, SSO, and OAuth Explained</a
+          ><a
+            class="post-link"
+            href="security/storing-passwords-safely-a-comprehensive-guide.html"
+            >Storing Passwords Safely: A Comprehensive Guide</a
+          ><a
+            class="post-link"
+            href="security/symmetric-vs-asymmetric-encryption.html"
+            >Symmetric vs Asymmetric Encryption</a
+          ><a class="post-link" href="security/token-cookie-session.html"
+            >Token, Cookie, Session</a
+          ><a
+            class="post-link"
+            href="security/top-4-authentication-mechanisms.html"
+            >Top 4 Authentication Mechanisms</a
+          ><a class="post-link" href="security/top-6-firewall-use-cases.html"
+            >Top 6 Firewall Use Cases</a
+          ><a
+            class="post-link"
+            href="security/top-network-security-cheatsheet.html"
+            >Top Network Security Cheatsheet</a
+          ><a class="post-link" href="security/types-of-vpns.html"
+            >Types of VPNs</a
+          ><a class="post-link" href="security/what-is-a-cookie.html"
+            >What is a Cookie?</a
+          ><a class="post-link" href="security/what-is-devsecops.html"
+            >What is DevSecOps?</a
+          ><a class="post-link" href="security/what-is-sso-single-sign-on.html"
+            >What is SSO (Single Sign-On)?</a
+          >
+        </div>
+      </div>
+      <div class="section" id="computer-fundamentals">
+        <div class="section-header">
+          <span class="section-icon">🖥️</span>
+          <h2 class="section-name">Computer Fundamentals</h2>
+          <span class="section-count">12</span>
+        </div>
+        <div class="post-list">
+          <a
+            class="post-link"
+            href="computer-fundamentals/dns-record-types-you-should-know.html"
+            >DNS Record Types You Should Know</a
+          ><a
+            class="post-link"
+            href="computer-fundamentals/explaining-8-popular-network-protocols-in-1-diagram.html"
+            >Explaining 8 Popular Network Protocols in 1 Diagram</a
+          ><a
+            class="post-link"
+            href="computer-fundamentals/how-does-the-domain-name-system-dns-lookup-work.html"
+            >How Does the Domain Name System (DNS) Lookup Work?</a
+          ><a
+            class="post-link"
+            href="computer-fundamentals/ipv4-vs-ipv6-differences.html"
+            >IPv4 vs. IPv6: Differences</a
+          ><a
+            class="post-link"
+            href="computer-fundamentals/osi-model-explained.html"
+            >OSI Model Explained</a
+          ><a
+            class="post-link"
+            href="computer-fundamentals/paging-vs-segmentation.html"
+            >Paging vs Segmentation</a
+          ><a
+            class="post-link"
+            href="computer-fundamentals/process-vs-thread-key-differences.html"
+            >Process vs Thread: Key Differences</a
+          ><a
+            class="post-link"
+            href="computer-fundamentals/tcp-vs-udp-for-online-gaming.html"
+            >TCP vs UDP for Online Gaming</a
+          ><a
+            class="post-link"
+            href="computer-fundamentals/top-4-most-popular-use-cases-for-udp.html"
+            >Top 4 Most Popular Use Cases for UDP</a
+          ><a
+            class="post-link"
+            href="computer-fundamentals/visualizing-a-sql-query.html"
+            >Visualizing a SQL Query</a
+          ><a
+            class="post-link"
+            href="computer-fundamentals/what-is-a-deadlock.html"
+            >What is a Deadlock?</a
+          ><a
+            class="post-link"
+            href="computer-fundamentals/what-is-the-best-way-to-learn-sql.html"
+            >What is the Best Way to Learn SQL?</a
+          >
+        </div>
+      </div>
+    </main>
+    <footer>
+      bytebytego offline library · all content belongs to bytebytego.com
+    </footer>
+  </body>
+</html>
