@@ -1,262 +1,117 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <title>Object-Oriented Design Interview — TechLib</title>
-    <style>
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-      :root {
-        --bg: #080b11;
-        --surface: #0f1420;
-        --surface2: #161d2e;
-        --border: #1e2940;
-        --border2: #253050;
-        --text: #e8edf5;
-        --muted: #6b7a9a;
-        --dim: #3d4f70;
-        --accent: #4e8eff;
-        --accent2: #7c5cfc;
-      }
-      html {
-        font-size: 15px;
-        scroll-behavior: smooth;
-      }
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        min-height: 100vh;
-      }
-      .header {
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        background: rgba(8, 11, 17, 0.9);
-        backdrop-filter: blur(16px);
-        border-bottom: 1px solid var(--border);
-        padding: 0 40px;
-      }
-      .header-inner {
-        max-width: 900px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 60px;
-      }
-      .back {
-        font-size: 13px;
-        color: var(--muted);
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        transition: color 0.15s;
-      }
-      .back:hover {
-        color: var(--accent);
-      }
-      .hero {
-        padding: 60px 40px 48px;
-        max-width: 900px;
-        margin: 0 auto;
-      }
-      .hero-icon {
-        font-size: 40px;
-        margin-bottom: 16px;
-      }
-      .course-label {
-        font-size: 11px;
-        color: var(--accent);
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        margin-bottom: 10px;
-      }
-      h1 {
-        font-size: clamp(24px, 4vw, 38px);
-        font-weight: 800;
-        letter-spacing: -0.03em;
-        line-height: 1.15;
-        margin-bottom: 12px;
-      }
-      .desc {
-        font-size: 15px;
-        color: var(--muted);
-        line-height: 1.7;
-        margin-bottom: 8px;
-      }
-      .chapter-count {
-        font-size: 13px;
-        color: var(--dim);
-        font-family: monospace;
-      }
-      .chapter-list {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 0 40px 80px;
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-      }
-      .chapter-item {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        padding: 16px 20px;
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        text-decoration: none;
-        color: var(--text);
-        transition: all 0.15s;
-      }
-      .chapter-item:hover {
-        background: var(--surface2);
-        border-color: var(--border2);
-        transform: translateX(3px);
-      }
-      .ch-num {
-        font-size: 12px;
-        color: var(--dim);
-        font-family: monospace;
-        min-width: 28px;
-        flex-shrink: 0;
-      }
-      .ch-title {
-        font-size: 14px;
-        font-weight: 500;
-        flex: 1;
-        line-height: 1.4;
-      }
-      .ch-arrow {
-        color: var(--dim);
-        font-size: 13px;
-        transition: all 0.15s;
-        flex-shrink: 0;
-      }
-      .chapter-item:hover .ch-arrow {
-        color: var(--accent);
-        transform: translateX(2px);
-      }
-      .divider {
-        height: 1px;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          var(--border),
-          transparent
-        );
-        margin: 8px 0;
-      }
-      @media (max-width: 700px) {
-        .header {
-          padding: 0 16px;
-        }
-        .hero {
-          padding: 40px 16px 32px;
-        }
-        .chapter-list {
-          padding: 0 16px 60px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header class="header">
-      <div class="header-inner">
-        <a class="back" href="../../index.html">← Back to Library</a>
-        <span style="font-size: 12px; color: var(--dim); font-family: monospace"
-          >14 chapters</span
-        >
-      </div>
-    </header>
-    <div class="hero">
-      <div class="hero-icon">🧱</div>
-      <div class="course-label">Course</div>
-      <h1>Object-Oriented Design Interview</h1>
-      <p class="desc">
-        Design parking lots, vending machines, chess games, and more. Master OOP
-        fundamentals and design patterns.
-      </p>
-      <p class="chapter-count">14 chapters</p>
-    </div>
-    <div class="chapter-list">
-      <a
-        class="chapter-item"
-        href="01_what-is-an-object-oriented-design-interview.html"
-      >
-        <span class="ch-num">01</span>
-        <span class="ch-title"
-          >What is an Object-Oriented Design Interview</span
-        >
-        <span class="ch-arrow">→</span> </a
-      ><a class="chapter-item" href="02_a-framework-for-the-ood-interview.html">
-        <span class="ch-num">02</span>
-        <span class="ch-title">A Framework for the OOD Interview</span>
-        <span class="ch-arrow">→</span> </a
-      ><a class="chapter-item" href="03_oop-fundamentals.html">
-        <span class="ch-num">03</span>
-        <span class="ch-title">OOP Fundamentals</span>
-        <span class="ch-arrow">→</span> </a
-      ><a class="chapter-item" href="04_design-a-parking-lot.html">
-        <span class="ch-num">04</span>
-        <span class="ch-title">Design a Parking Lot</span>
-        <span class="ch-arrow">→</span> </a
-      ><a class="chapter-item" href="05_design-a-vending-machine.html">
-        <span class="ch-num">05</span>
-        <span class="ch-title">Design a Vending Machine</span>
-        <span class="ch-arrow">→</span> </a
-      ><a class="chapter-item" href="06_design-amazon-locker.html">
-        <span class="ch-num">06</span>
-        <span class="ch-title">Design Amazon Locker</span>
-        <span class="ch-arrow">→</span> </a
-      ><a class="chapter-item" href="07_design-linkedin.html">
-        <span class="ch-num">07</span>
-        <span class="ch-title">Design LinkedIn</span>
-        <span class="ch-arrow">→</span> </a
-      ><a class="chapter-item" href="08_design-a-chess-game.html">
-        <span class="ch-num">08</span>
-        <span class="ch-title">Design a Chess Game</span>
-        <span class="ch-arrow">→</span> </a
-      ><a class="chapter-item" href="09_design-a-tic-tac-toe-game.html">
-        <span class="ch-num">09</span>
-        <span class="ch-title">Design a Tic Tac Toe Game</span>
-        <span class="ch-arrow">→</span> </a
-      ><a
-        class="chapter-item"
-        href="10_design-a-library-management-system.html"
-      >
-        <span class="ch-num">10</span>
-        <span class="ch-title">Design a Library Management System</span>
-        <span class="ch-arrow">→</span> </a
-      ><a class="chapter-item" href="11_design-a-food-delivery-service.html">
-        <span class="ch-num">11</span>
-        <span class="ch-title">Design a Food Delivery Service</span>
-        <span class="ch-arrow">→</span> </a
-      ><a class="chapter-item" href="12_design-a-hotel-management-system.html">
-        <span class="ch-num">12</span>
-        <span class="ch-title">Design a Hotel Management System</span>
-        <span class="ch-arrow">→</span> </a
-      ><a
-        class="chapter-item"
-        href="13_design-a-movie-ticket-booking-system.html"
-      >
-        <span class="ch-num">13</span>
-        <span class="ch-title">Design a Movie Ticket Booking System</span>
-        <span class="ch-arrow">→</span> </a
-      ><a class="chapter-item" href="14_design-twitter.html">
-        <span class="ch-num">14</span>
-        <span class="ch-title">Design Twitter</span>
-        <span class="ch-arrow">→</span>
-      </a>
-    </div>
-  </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Object-Oriented Design Interview — ByteByteGo</title>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#080b11;--surface:#0f1420;--surface2:#161d2e;--border:#1e2940;--border2:#253050;--text:#e8edf5;--muted:#6b7a9a;--dim:#3d4f70;--accent:#4e8eff;--accent2:#7c5cfc;}
+html{font-size:15px;scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+.header{position:sticky;top:0;z-index:100;background:rgba(8,11,17,0.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 40px}
+.header-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
+.back{font-size:13px;color:var(--muted);text-decoration:none;transition:color .15s}
+.back:hover{color:var(--accent)}
+.hero{padding:60px 40px 48px;max-width:900px;margin:0 auto}
+.hero-icon{font-size:40px;margin-bottom:16px}
+.course-label{font-size:11px;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}
+h1{font-size:clamp(24px,4vw,38px);font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-bottom:12px}
+.desc{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:8px}
+.chapter-count{font-size:13px;color:var(--dim);font-family:monospace}
+.chapter-list{max-width:900px;margin:0 auto;padding:0 40px 80px;display:flex;flex-direction:column;gap:4px}
+.chapter-item{display:flex;align-items:center;gap:16px;padding:16px 20px;background:var(--surface);border:1px solid var(--border);border-radius:10px;text-decoration:none;color:var(--text);transition:all .15s}
+.chapter-item:hover{background:var(--surface2);border-color:var(--border2);transform:translateX(3px)}
+.ch-num{font-size:12px;color:var(--dim);font-family:monospace;min-width:28px;flex-shrink:0}
+.ch-title{font-size:14px;font-weight:500;flex:1;line-height:1.4}
+.ch-arrow{color:var(--dim);font-size:13px;transition:all .15s;flex-shrink:0}
+.chapter-item:hover .ch-arrow{color:var(--accent);transform:translateX(2px)}
+@media(max-width:700px){.header{padding:0 16px}.hero{padding:40px 16px 32px}.chapter-list{padding:0 16px 60px}}</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <a class="back" href="../../index.html">← Back to Library</a>
+    <span style="font-size:12px;color:var(--dim);font-family:monospace">14 chapters</span>
+  </div>
+</header>
+<div class="hero">
+  <div class="hero-icon">🧱</div>
+  <div class="course-label">Course</div>
+  <h1>Object-Oriented Design Interview</h1>
+  <p class="desc">Design parking lots, vending machines, chess games, and more. Master OOP fundamentals and design patterns.</p>
+  <p class="chapter-count">14 chapters</p>
+</div>
+<div class="chapter-list">
+<a class="chapter-item" href="01_what-is-an-object-oriented-design-interview.html">
+    <span class="ch-num">01</span>
+    <span class="ch-title">What is an Object-Oriented Design Interview</span>
+    <span class="ch-arrow">→</span>
+  </a>
+<a class="chapter-item" href="02_a-framework-for-the-ood-interview.html">
+    <span class="ch-num">02</span>
+    <span class="ch-title">A Framework for the OOD Interview</span>
+    <span class="ch-arrow">→</span>
+  </a>
+<a class="chapter-item" href="03_oop-fundamentals.html">
+    <span class="ch-num">03</span>
+    <span class="ch-title">OOP Fundamentals</span>
+    <span class="ch-arrow">→</span>
+  </a>
+<a class="chapter-item" href="04_design-a-parking-lot.html">
+    <span class="ch-num">04</span>
+    <span class="ch-title">Design a Parking Lot</span>
+    <span class="ch-arrow">→</span>
+  </a>
+<a class="chapter-item" href="05_design-a-movie-ticket-booking-system.html">
+    <span class="ch-num">05</span>
+    <span class="ch-title">Design a Movie Ticket Booking System</span>
+    <span class="ch-arrow">→</span>
+  </a>
+<a class="chapter-item" href="06_design-a-unix-file-search-system.html">
+    <span class="ch-num">06</span>
+    <span class="ch-title">Design a Unix File Search System</span>
+    <span class="ch-arrow">→</span>
+  </a>
+<a class="chapter-item" href="07_design-a-vending-machine.html">
+    <span class="ch-num">07</span>
+    <span class="ch-title">Design a Vending Machine</span>
+    <span class="ch-arrow">→</span>
+  </a>
+<a class="chapter-item" href="08_design-an-elevator-system.html">
+    <span class="ch-num">08</span>
+    <span class="ch-title">Design an Elevator System</span>
+    <span class="ch-arrow">→</span>
+  </a>
+<a class="chapter-item" href="09_design-a-grocery-store-system.html">
+    <span class="ch-num">09</span>
+    <span class="ch-title">Design a Grocery Store System</span>
+    <span class="ch-arrow">→</span>
+  </a>
+<a class="chapter-item" href="10_design-a-tic-tac-toe-game.html">
+    <span class="ch-num">10</span>
+    <span class="ch-title">Design a Tic Tac Toe Game</span>
+    <span class="ch-arrow">→</span>
+  </a>
+<a class="chapter-item" href="11_design-a-blackjack-game.html">
+    <span class="ch-num">11</span>
+    <span class="ch-title">Design a Blackjack Game</span>
+    <span class="ch-arrow">→</span>
+  </a>
+<a class="chapter-item" href="12_design-a-shipping-locker-system.html">
+    <span class="ch-num">12</span>
+    <span class="ch-title">Design a Shipping Locker System</span>
+    <span class="ch-arrow">→</span>
+  </a>
+<a class="chapter-item" href="13_design-an-atm-system.html">
+    <span class="ch-num">13</span>
+    <span class="ch-title">Design an ATM System</span>
+    <span class="ch-arrow">→</span>
+  </a>
+<a class="chapter-item" href="14_design-a-restaurant-management-system.html">
+    <span class="ch-num">14</span>
+    <span class="ch-title">Design a Restaurant Management System</span>
+    <span class="ch-arrow">→</span>
+  </a>
+</div>
+</body>
 </html>
