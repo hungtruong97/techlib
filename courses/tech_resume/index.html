@@ -19,11 +19,10 @@ h1{font-size:clamp(24px,4vw,38px);font-weight:800;letter-spacing:-0.03em;line-he
 .chapter-list{max-width:900px;margin:0 auto;padding:0 40px 80px;display:flex;flex-direction:column;gap:4px}
 .chapter-item{display:flex;align-items:center;gap:16px;padding:16px 20px;background:var(--surface);border:1px solid var(--border);border-radius:10px;text-decoration:none;color:var(--text);transition:all .15s}
 .chapter-item:hover{background:var(--surface2);border-color:var(--border2);transform:translateX(3px)}
-.chapter-item.part{background:transparent;border-color:transparent;padding:20px 20px 4px;cursor:default;pointer-events:none}
-.chapter-item.part:hover{transform:none}
+.part-header{display:flex;align-items:center;gap:16px;padding:20px 20px 6px}
+.part-label{font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.1em}
 .ch-num{font-size:12px;color:var(--dim);font-family:monospace;min-width:28px;flex-shrink:0}
 .ch-title{font-size:14px;font-weight:500;flex:1;line-height:1.4}
-.chapter-item.part .ch-title{font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.1em}
 .ch-arrow{color:var(--dim);font-size:13px;transition:all .15s;flex-shrink:0}
 .chapter-item:hover .ch-arrow{color:var(--accent);transform:translateX(2px)}
 @media(max-width:700px){.header{padding:0 16px}.hero{padding:40px 16px 32px}.chapter-list{padding:0 16px 60px}}</style>
@@ -32,7 +31,7 @@ h1{font-size:clamp(24px,4vw,38px);font-weight:800;letter-spacing:-0.03em;line-he
 <header class="header">
   <div class="header-inner">
     <a class="back" href="../../index.html">← Back to Library</a>
-    <span style="font-size:12px;color:var(--dim);font-family:monospace">19 chapters</span>
+    <span style="font-size:12px;color:var(--dim);font-family:monospace">16 chapters</span>
   </div>
 </header>
 <div class="hero">
@@ -40,7 +39,7 @@ h1{font-size:clamp(24px,4vw,38px);font-weight:800;letter-spacing:-0.03em;line-he
   <div class="course-label">Course</div>
   <h1>Tech Resume</h1>
   <p class="desc">Write a resume that gets you interviews. Covers resume structure, standing out, common mistakes, and templates.</p>
-  <p class="chapter-count">19 chapters</p>
+  <p class="chapter-count">16 chapters</p>
 </div>
 <div class="chapter-list">
 <a class="chapter-item" href="01_acknowledgements.html">
@@ -53,84 +52,76 @@ h1{font-size:clamp(24px,4vw,38px);font-weight:800;letter-spacing:-0.03em;line-he
     <span class="ch-title">Introduction</span>
     <span class="ch-arrow">→</span>
   </a>
-<div class="chapter-item part">
-      <span class="ch-num"></span>
-      <span class="ch-title">PART 1: RESUMES AND THE HIRING PROCESS</span>
-    </div>
+<div class="part-header"><span class="part-label">PART 1: RESUMES AND THE HIRING PROCESS</span></div>
 <a class="chapter-item" href="04_chapter-1-why-resumes-and-cvs-are-important.html">
-    <span class="ch-num">04</span>
+    <span class="ch-num">03</span>
     <span class="ch-title">Chapter 1: Why Resumes and CVs are Important</span>
     <span class="ch-arrow">→</span>
   </a>
 <a class="chapter-item" href="05_chapter-2-the-hiring-pipeline.html">
-    <span class="ch-num">05</span>
+    <span class="ch-num">04</span>
     <span class="ch-title">Chapter 2: The Hiring Pipeline</span>
     <span class="ch-arrow">→</span>
   </a>
-<div class="chapter-item part">
-      <span class="ch-num"></span>
-      <span class="ch-title">PART 2: WRITING THE RESUME</span>
-    </div>
+<div class="part-header"><span class="part-label">PART 2: WRITING THE RESUME</span></div>
 <a class="chapter-item" href="07_chapter-3-tech-resume-basics.html">
-    <span class="ch-num">07</span>
+    <span class="ch-num">05</span>
     <span class="ch-title">Chapter 3: Tech Resume Basics</span>
     <span class="ch-arrow">→</span>
   </a>
 <a class="chapter-item" href="08_chapter-4-resume-structure.html">
-    <span class="ch-num">08</span>
+    <span class="ch-num">06</span>
     <span class="ch-title">Chapter 4: Resume Structure</span>
     <span class="ch-arrow">→</span>
   </a>
 <a class="chapter-item" href="09_chapter-5-standing-out.html">
-    <span class="ch-num">09</span>
+    <span class="ch-num">07</span>
     <span class="ch-title">Chapter 5: Standing Out</span>
     <span class="ch-arrow">→</span>
   </a>
 <a class="chapter-item" href="10_chapter-6-common-mistakes.html">
-    <span class="ch-num">10</span>
+    <span class="ch-num">08</span>
     <span class="ch-title">Chapter 6: Common Mistakes</span>
     <span class="ch-arrow">→</span>
   </a>
 <a class="chapter-item" href="11_chapter-7-different-experience-levels-different-career-paths.html">
-    <span class="ch-num">11</span>
+    <span class="ch-num">09</span>
     <span class="ch-title">Chapter 7: Different Experience Levels, Different Career Paths</span>
     <span class="ch-arrow">→</span>
   </a>
-<div class="chapter-item part">
-      <span class="ch-num"></span>
-      <span class="ch-title">Error response</span>
-    </div>
-<a class="chapter-item" href="13_chapter-8-where-to-apply.html">
-    <span class="ch-num">13</span>
-    <span class="ch-title">Error response</span>
+<a class="chapter-item" href="12_chapter-8-exercises-to-polish-your-resume.html">
+    <span class="ch-num">10</span>
+    <span class="ch-title">Chapter 8: Exercises to Polish Your Resume</span>
     <span class="ch-arrow">→</span>
   </a>
-<a class="chapter-item" href="14_chapter-9-resume-critiques.html">
-    <span class="ch-num">14</span>
-    <span class="ch-title">Error response</span>
+<a class="chapter-item" href="13_chapter-9-beyond-the-resume.html">
+    <span class="ch-num">11</span>
+    <span class="ch-title">Chapter 9: Beyond the Resume</span>
     <span class="ch-arrow">→</span>
   </a>
+<div class="part-header"><span class="part-label">PART 3: EXAMPLES AND INSPIRATION</span></div>
 <a class="chapter-item" href="15_chapter-10-good-resume-template-principles.html">
-    <span class="ch-num">15</span>
+    <span class="ch-num">12</span>
     <span class="ch-title">Chapter 10: Good Resume Template Principles</span>
     <span class="ch-arrow">→</span>
   </a>
-<div class="chapter-item part">
-      <span class="ch-num"></span>
-      <span class="ch-title">Error response</span>
-    </div>
-<a class="chapter-item" href="17_chapter-11-linkedin.html">
-    <span class="ch-num">17</span>
-    <span class="ch-title">Error response</span>
+<a class="chapter-item" href="16_chapter-11-resume-templates.html">
+    <span class="ch-num">13</span>
+    <span class="ch-title">Chapter 11: Resume Templates</span>
     <span class="ch-arrow">→</span>
   </a>
-<a class="chapter-item" href="18_chapter-12-portfolio-projects.html">
-    <span class="ch-num">18</span>
-    <span class="ch-title">Error response</span>
+<a class="chapter-item" href="17_chapter-12-resume-improvement-examples.html">
+    <span class="ch-num">14</span>
+    <span class="ch-title">Chapter 12: Resume Improvement Examples</span>
+    <span class="ch-arrow">→</span>
+  </a>
+<a class="chapter-item" href="18_chapter-13-advice-for-hiring-managers-on-running-a-good-screening-process.html">
+    <span class="ch-num">15</span>
+    <span class="ch-title">Chapter 13: Advice for Hiring Managers on Running a Good Screening Process</span>
     <span class="ch-arrow">→</span>
   </a>
 <a class="chapter-item" href="19_conclusion.html">
-    <span class="ch-num">19</span>
+    <span class="ch-num">16</span>
     <span class="ch-title">Conclusion</span>
     <span class="ch-arrow">→</span>
   </a>
